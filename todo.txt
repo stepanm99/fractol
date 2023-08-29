@@ -1,2 +1,8 @@
 1 try to compile with minilibx.a library to see if it works
 2 figure out the makefile so it builds the library, implement clean and all this stuff...
+
+
+
+
+useful stuff:
+removing files recursively by extension: https://unix.stackexchange.com/questions/116389/recursively-delete-all-files-with-a-given-extension
