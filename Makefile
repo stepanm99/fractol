@@ -6,7 +6,7 @@
 #    By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 16:06:38 by smelicha          #+#    #+#              #
-#    Updated: 2023/08/27 16:58:39 by smelicha         ###   ########.fr        #
+#    Updated: 2023/08/29 17:55:52 by smelicha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCDIR = src
 SRC = src/test.c
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -g -Imlx
 
 OBJ	= $(SRC:.c=.o)
 
@@ -25,9 +25,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "Linking $@"
-	@make -C ./libraries/minilbx
-	@cp ./libraries/minilibx/libmlx.a $(NAME)
-	@ar rcs $(NAME) $(OBJ)
+	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 	@echo "Done!"
 
 %.o: %.c
