@@ -1,0 +1,62 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/05/23 09:07:49 by jkollner          #+#    #+#              #
+#    Updated: 2023/05/30 19:35:50 by smelicha         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
+NAME = fractol
+#=================== Compiler =======================#
+CC = cc
+CFLAGS = -Wall -Wextra
+
+#=================== Files =======================#
+C_FILES = fractol.c sets.c graphic.c controlls.c input.c
+#=================== Own Libraries =======================#
+PRINTF = -Lprintf/ -lftprintf
+LIBFT = -Lprintf/libft -lft
+
+#=================== Other Libraries =======================#
+MLX = ./MLX42
+LIBMLX = ${MLX}/build/libmlx42.a
+MLXLIB = ${LIBMLX} -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
+
+
+COBJS = ${C_FILES:.c=.o}
+RM	= rm -f
+
+all: libmlx libft printf $(NAME)
+
+libmlx:
+	@git submodule init MLX42
+	@git submodule update MLX42
+	@cmake $(MLX) -B $(MLX)/build
+	@make -C $(MLX)/build -j4
+
+printf:
+	@$(MAKE) -C printf/
+
+libft:
+	@$(MAKE) -C printf/libft/
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -o $@ -c $< && printf "\e[33mCompiling: $(notdir $<)\n"
+
+$(NAME): $(C_FILES)
+	@$(CC) $(C_FILES) $(LIBMLX) $(MLXLIB) $(LIBFT) $(PRINTF) -o ${NAME}
+
+clean:
+		@${RM} ${COBJS} && printf "\e[1;31m⚠️  Removed Objects ⚠️\e[0m\n"
+
+fclean: clean
+	@${RM} ${NAME} && printf "\e[1;31m⚠️  Removed fractol ⚠️\e[0m\n"
+
+re:		fclean libft printf all
+
+.PHONY:	all clean fclean re

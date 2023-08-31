@@ -6,18 +6,18 @@
 #    By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 16:06:38 by smelicha          #+#    #+#              #
-#    Updated: 2023/08/29 17:55:52 by smelicha         ###   ########.fr        #
+#    Updated: 2023/08/31 14:16:31 by smelicha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
-
-SRCDIR = src
-
-SRC = src/test.c
-
+#Sources:
+SRC = main.c src/test.c
+#Libraries:
+LIBMLX = ./MLX42/build/libmlx42.a
+#Compiler stuff:
 CC = cc
-FLAGS = -Wall -Wextra -Werror -g -Imlx
+FLAGS = -Wall -Wextra -Werror
 
 OBJ	= $(SRC:.c=.o)
 
@@ -44,16 +44,4 @@ re: fclean all
 test: all
 	@./$(NAME)
 
-bonus: all
-
-maintest: all
-	@echo "~~~ Testing with main function ~~~"
-	@$(CC) $(SRC) libraries/minilibx/libmlx.a main.c $(FLAGS)
-	@./a.out
-
-maindebug: all
-	@echo "~~~ Testing with main function ~~~"
-	@$(CC) $(NAME) libraries/minilibx/libmlx.a main.c -g $(FLAGS) -o prog
-	@./prog
-
-.PHONY: all clean fclean re test bonus maintest maindebug
+.PHONY: all clean fclean re test
