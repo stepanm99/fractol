@@ -6,7 +6,7 @@
 #    By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 16:06:38 by smelicha          #+#    #+#              #
-#    Updated: 2023/08/31 15:16:58 by smelicha         ###   ########.fr        #
+#    Updated: 2023/08/31 15:55:10 by smelicha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,10 @@ fclean: clean
 
 re: fclean all
 
-test: all
+alltest: all
+	@./$(NAME)
+
+test:
 	@./$(NAME)
 
 .PHONY: all clean fclean re test
