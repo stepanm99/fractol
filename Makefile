@@ -6,7 +6,7 @@
 #    By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 16:06:38 by smelicha          #+#    #+#              #
-#    Updated: 2023/08/31 14:16:31 by smelicha         ###   ########.fr        #
+#    Updated: 2023/08/31 15:16:58 by smelicha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@ NAME = fractol
 #Sources:
 SRC = main.c src/test.c
 #Libraries:
+MLX = ./MLX42
+MLXLIB = ./MLX42/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 LIBMLX = ./MLX42/build/libmlx42.a
 #Compiler stuff:
 CC = cc
@@ -21,12 +23,18 @@ FLAGS = -Wall -Wextra -Werror
 
 OBJ	= $(SRC:.c=.o)
 
-all: $(NAME)
+all: $(NAME) libmlx
 
 $(NAME): $(OBJ)
 	@echo "Linking $@"
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(OBJ) $(LIBMLX) $(MLXLIB) $(FLAGS) -o $(NAME)
 	@echo "Done!"
+
+libmlx:
+	@git submodule init MLX42
+	@git submodule update MLX42
+	cmake ./MLX42 -B ./MLX42/build
+	cmake --build ./MLX42/build
 
 %.o: %.c
 	@echo "Compiling $<"
