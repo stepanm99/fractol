@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:06:41 by smelicha          #+#    #+#             */
-/*   Updated: 2023/08/31 17:10:38 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/08/31 17:59:15 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 #include <stdbool.h>
 #include "./MLX42/include/MLX42/MLX42.h"
 
-#define WIDTH 512
-#define HEIGHT 512
+#define WIDTH 640
+#define HEIGHT 480
 
 static mlx_image_t* image;
 
@@ -42,13 +42,75 @@ void ft_randomize(void* param)
 		for (int32_t y = 0; y < image->height; ++y)
 		{
 			uint32_t color = ft_pixel(
-				rand() % 0xFF, // R
-				rand() % 0xFF, // G
-				rand() % 0xFF, // B
-				rand() % 0xFF  // A
+				i, // R
+				y, // G
+				i, // B
+				y  // A
 			);
 			mlx_put_pixel(image, i, y, color);
 		}
+	}
+}
+
+void	ft_mandelbrot(void* param)
+{
+	float	xinc;
+	float	yinc;
+	float	x;
+	float	y;
+	float	z;
+	int		xcoor;
+	int		ycoor;
+	int		i;
+	int		imax;
+
+	xcoor = 0;
+	ycoor = 0;
+	imax = 250;
+	x = -2.0;
+	y = -1.5;
+	z = 0.0;
+	xinc = 4.0 / image->width;
+	yinc = 3.0 / image->height;
+	while (ycoor <= image->height)
+	{
+		while (xcoor <= image->width)
+		{
+			z = x;
+			i = 0;
+			while (i <= imax && z >= 0)
+			{
+				z = (z * z) + y;
+				i++;
+			}
+			if (i == imax)
+			{
+				uint32_t color = ft_pixel(
+					255,
+					255,
+					255,
+					0
+				);
+				printf("i==imax\n");
+				mlx_put_pixel(image, xcoor, ycoor, color);
+			}
+			else
+			{
+				uint32_t color = ft_pixel(
+					0,
+					0,
+					0,
+					0
+				);
+				printf("else\n");
+				mlx_put_pixel(image, xcoor, ycoor, color);
+			}
+			x = x + xinc;
+			xcoor++;
+		}
+		y = y + yinc;
+		xcoor = 0;
+		ycoor++;
 	}
 }
 
@@ -80,7 +142,7 @@ int32_t main(int32_t argc, const char* argv[])
 		puts(mlx_strerror(mlx_errno));
 		return(EXIT_FAILURE);
 	}
-	if (!(image = mlx_new_image(mlx, 128, 128)))
+	if (!(image = mlx_new_image(mlx, 255, 255)))
 	{
 		mlx_close_window(mlx);
 		puts(mlx_strerror(mlx_errno));
@@ -93,7 +155,8 @@ int32_t main(int32_t argc, const char* argv[])
 		return(EXIT_FAILURE);
 	}
 	
-	mlx_loop_hook(mlx, ft_randomize, mlx);
+	ft_mandelbrot(mlx);
+//	mlx_loop_hook(mlx, ft_randomize, mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 
 	mlx_loop(mlx);
