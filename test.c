@@ -6,25 +6,30 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 14:58:08 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/02 19:22:35 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/02 20:13:40 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 
+
+/*Struct for storing complex number*/
 typedef struct com_num
 {
 	double	real;
 	double	imag;
 }	t_com_num;
 
+/*Struct for storing mandelbrot numbers for compputation*/
 typedef struct man_num
 {
 	t_com_num	z;
 	t_com_num	c;
 }	t_man_num;
 
+
+/*Initialization of a compplex number*/
 t_com_num	com_num_init(double real, double imag)
 {
 	t_com_num	res;
@@ -34,6 +39,7 @@ t_com_num	com_num_init(double real, double imag)
 	return (res);
 }
 
+/*Multiplication of two comlex numbers stored as t_com_num*/
 t_com_num	com_multiplication(t_com_num num1, t_com_num num2)
 {
 	t_com_num	res;
@@ -43,6 +49,7 @@ t_com_num	com_multiplication(t_com_num num1, t_com_num num2)
 	return (res);
 }
 
+/*Sum of two complex numbers stored as t_com_num*/
 t_com_num	com_sum(t_com_num num1, t_com_num num2)
 {
 	t_com_num	res;
@@ -52,6 +59,8 @@ t_com_num	com_sum(t_com_num num1, t_com_num num2)
 	return (res);
 }
 
+/*One iteration of mandelbrot equation, receives pointer to a struct with
+numbers for z and c for computation, directly changes z value in the struct*/
 void	mandelbrot_iteration(t_man_num *m_num)
 {
 	t_com_num	z_pow;
