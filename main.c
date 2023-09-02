@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:06:41 by smelicha          #+#    #+#             */
-/*   Updated: 2023/08/31 17:59:15 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/02 14:31:40 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,28 @@ int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 
 void ft_randomize(void* param)
 {
-	for (int32_t i = 0; i < image->width; ++i)
+	static int	x;
+	static int	y;
+
+	if (x != image->instances[0].x || y != image->instances[0].y)
 	{
-		for (int32_t y = 0; y < image->height; ++y)
+		printf("x: %i, y: %i\nstruct x: %i, struct y: %i\n\n", x, y, image->instances[0].x, image->instances[0].y);
+		for (int32_t i = 0; i < image->width; ++i)
 		{
-			uint32_t color = ft_pixel(
-				i, // R
-				y, // G
-				i, // B
-				y  // A
-			);
-			mlx_put_pixel(image, i, y, color);
+			for (int32_t y = 0; y < image->height; ++y)
+			{
+				uint32_t color = ft_pixel(
+					rand() % 0xff, // R
+					rand() % 0xff, // G
+					i, // B
+					y  // A
+				);
+				mlx_put_pixel(image, i, y, color);
+			}
 		}
 	}
+	x = image->instances[0].x;
+	y = image->instances[0].y;
 }
 
 void	ft_mandelbrot(void* param)
@@ -155,8 +164,9 @@ int32_t main(int32_t argc, const char* argv[])
 		return(EXIT_FAILURE);
 	}
 	
-	ft_mandelbrot(mlx);
-//	mlx_loop_hook(mlx, ft_randomize, mlx);
+//	ft_randomize(mlx);
+//	ft_mandelbrot(mlx);
+	mlx_loop_hook(mlx, ft_randomize, mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 
 	mlx_loop(mlx);
