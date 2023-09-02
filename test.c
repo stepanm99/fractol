@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 14:58:08 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/02 15:42:34 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/02 19:22:35 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,59 +16,75 @@
 typedef struct com_num
 {
 	double	real;
-	double	imaginary;
-}	com_num_t;
+	double	imag;
+}	t_com_num;
 
 typedef struct man_num
 {
-	com_num_t	z;
-	com_num_t	c;
-} man_num_t;
+	t_com_num	z;
+	t_com_num	c;
+}	t_man_num;
 
-com_num_t	com_num_init(double real, double imaginary)
+t_com_num	com_num_init(double real, double imag)
 {
-	com_num_t	result;
+	t_com_num	res;
 
-	result.real = real;
-	result.imaginary = imaginary;
-	return(result);
+	res.real = real;
+	res.imag = imag;
+	return (res);
 }
 
-com_num_t	com_multiplication(com_num_t num1, com_num_t num2)
+t_com_num	com_multiplication(t_com_num num1, t_com_num num2)
 {
-	com_num_t	result;
+	t_com_num	res;
 
-	result.real = ((num1.real * num2.real) - (num1.imaginary * num2.imaginary));
-	result.imaginary = ((num1.real * num2.imaginary) + (num1.imaginary * num2.real));
-
-	return(result);
+	res.real = ((num1.real * num2.real) - (num1.imag * num2.imag));
+	res.imag = ((num1.real * num2.imag) + (num1.imag * num2.real));
+	return (res);
 }
 
-int	check_man_set_belonging(man_num_t *mandelbrot_num)
+t_com_num	com_sum(t_com_num num1, t_com_num num2)
 {
-	int	max_i = 200;
-	mandelbrot_num->z.real = 0;
-	mandelbrot_num->z.imaginary = 0;
+	t_com_num	res;
 
-	printf("manndelbrot c real: %f", mandelbrot_num->c.real);
-	return(0);
+	res.real = num1.real + num2.real;
+	res.imag = num1.imag + num2.imag;
+	return (res);
 }
 
-int	main(void) 
+void	mandelbrot_iteration(t_man_num *m_num)
 {
-	man_num_t	mandelbrot_num;
-	man_num_t	*man_num_ptr;
+	t_com_num	z_pow;
+	t_com_num	z_sum;
 
-	man_num_ptr = &mandelbrot_num;
-	mandelbrot_num.c.real = 0.5;
-	mandelbrot_num.c.imaginary = 0.5;
-	mandelbrot_num.z = com_num_init(0.0, 0.0);
-	mandelbrot_num.c = com_num_init(0.5, 0.5);
+	z_pow = com_multiplication(m_num->z, m_num->z);
+	z_sum = com_sum(z_pow, m_num->c);
+	m_num->z = z_sum;
+}
 
-	mandelbrot_num.z = com_multiplication(mandelbrot_num.z, mandelbrot_num.c);
-	mandelbrot_num.z = com_multiplication(mandelbrot_num.z, mandelbrot_num.c);
-	mandelbrot_num.z = com_multiplication(mandelbrot_num.z, mandelbrot_num.c);
-	printf("z: %f + %fi c: %f + %fi", mandelbrot_num.z.real, mandelbrot_num.z.imaginary, mandelbrot_num.c.real, mandelbrot_num.c.imaginary);
-//	check_man_set_belonging(man_num_ptr);
-	return(0);
+int	main(void)
+{
+	t_man_num	man_num;
+	t_man_num	*man_num_ptr;
+	t_com_num	num1;
+	t_com_num	num2;
+	t_com_num	result;
+
+	num1 = com_num_init(8.0, 10.0);
+	num2 = com_num_init(3.0, 5.0);
+	man_num_ptr = &man_num;
+	man_num.z = com_num_init(0.0, 0.0);
+	man_num.c = com_num_init(0.5, 0.5);
+	printf("z: % f + % fi c: % f + % fi\n", man_num.z.real, man_num.z.imag, man_num.c.real, man_num.c.imag);
+	mandelbrot_iteration(man_num_ptr);
+	printf("z: % f + % fi c: % f + % fi\n", man_num.z.real, man_num.z.imag, man_num.c.real, man_num.c.imag);
+	mandelbrot_iteration(man_num_ptr);
+	printf("z: % f + % fi c: % f + % fi\n", man_num.z.real, man_num.z.imag, man_num.c.real, man_num.c.imag);
+	mandelbrot_iteration(man_num_ptr);
+	printf("z: % f + % fi c: % f + % fi\n", man_num.z.real, man_num.z.imag, man_num.c.real, man_num.c.imag);
+	mandelbrot_iteration(man_num_ptr);
+	printf("z: % f + % fi c: % f + % fi\n", man_num.z.real, man_num.z.imag, man_num.c.real, man_num.c.imag);
+	result = com_multiplication(num1, num2);
+	printf("result: % f + % fi\n", result.real, result.imag);
+	return (0);
 }
