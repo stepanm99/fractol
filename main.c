@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:06:41 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/02 14:31:40 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/02 14:43:03 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void ft_randomize(void* param)
 
 	if (x != image->instances[0].x || y != image->instances[0].y)
 	{
-		printf("x: %i, y: %i\nstruct x: %i, struct y: %i\n\n", x, y, image->instances[0].x, image->instances[0].y);
+//		printf("x: %i, y: %i\nstruct x: %i, struct y: %i\n\n", x, y, image->instances[0].x, image->instances[0].y);
 		for (int32_t i = 0; i < image->width; ++i)
 		{
 			for (int32_t y = 0; y < image->height; ++y)
@@ -51,7 +51,7 @@ void ft_randomize(void* param)
 					rand() % 0xff, // R
 					rand() % 0xff, // G
 					i, // B
-					y  // A
+					255  // A
 				);
 				mlx_put_pixel(image, i, y, color);
 			}
