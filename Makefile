@@ -15,7 +15,7 @@ NAME = fractol
 SRC = main.c src/test.c
 #Libraries:
 MLX = ./MLX42
-MLXLIB = ./MLX42/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
+MLXLIB = ./MLX42/build/libmlx42.a -Iinclude -lglfw -L"./glfw"   #/Users/$(USER)/.brew/opt/glfw/lib/
 LIBMLX = ./MLX42/build/libmlx42.a
 #Compiler stuff:
 CC = cc
@@ -23,7 +23,7 @@ FLAGS = -Wall -Wextra -Werror
 
 OBJ	= $(SRC:.c=.o)
 
-all: $(NAME) libmlx
+all: $(NAME) libmlx glfw
 
 $(NAME): $(OBJ)
 	@echo "Linking $@"
@@ -37,8 +37,8 @@ libmlx:
 	cmake --build ./MLX42/build
 
 glfw:
-	@git submodule init glfw
-	@git submodule update glfw
+	git submodule init glfw
+	git submodule update glfw
 	cmake ./glfw -B ./glfw/build
 	cmake --build ./glfw/build
 
@@ -48,7 +48,6 @@ glfw:
 
 clean:
 	@rm -f $(OBJ) $(OBJB)
-	@make clean -C ./libraries/minilibx
 
 fclean: clean
 	@rm -f $(NAME)
