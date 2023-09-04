@@ -82,7 +82,7 @@ void ft_mandel_comp(void *param, double x, double y, double zoom, int iter)
 		while (x_c <= WIDTH)
 		{
 			man_num.z = com_num_init(0.0, 0.0);
-			man_num.c = com_num_init(((x_c * div_x) - 2.0), ((x_c * div_y) - 1.12));
+			man_num.c = com_num_init(((x_c * div_x) - 2.0), ((y_c * div_y) - 1.12));
 			while (i <= iter)
 			{
 				if (com_abs_value(man_num.z) > 4)
@@ -142,7 +142,7 @@ int32_t main(int32_t argc, const char* argv[])
 	mlx_t* mlx;
 
 	// Gotta error check this stuff
-	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
+	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", false)))
 	{
 		puts(mlx_strerror(mlx_errno));
 		return(EXIT_FAILURE);

@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRACTOL_H
+# define FRACTOL_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -36,3 +39,5 @@ t_com_num	com_multiplication(t_com_num num1, t_com_num num2);
 t_com_num	com_sum(t_com_num num1, t_com_num num2);
 double 		com_abs_value(t_com_num num);
 void		mandelbrot_iteration(t_man_num *m_num);
+
+#endif
