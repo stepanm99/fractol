@@ -17,6 +17,7 @@ SRC = main.c src/mandelbrot_math.c
 MLX = ./MLX42
 MLXLIB = ./MLX42/build/libmlx42.a -Iinclude -lglfw -L"./glfw"   #/Users/$(USER)/.brew/opt/glfw/lib/
 LIBMLX = ./MLX42/build/libmlx42.a
+MATHLIB = -lm
 #Compiler stuff:
 CC = cc
 FLAGS = -Wall -Wextra -Werror
@@ -27,20 +28,20 @@ all: libmlx glfw $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "Linking $@"
-	$(CC) $(OBJ) $(LIBMLX) $(MLXLIB) $(FLAGS) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBMLX) $(MLXLIB) $(MATHLIB) $(FLAGS) -o $(NAME)
 	@echo "Done!"
 
 libmlx:
 	@git submodule init MLX42
 	@git submodule update MLX42
-	cmake ./MLX42 -B ./MLX42/build
-	cmake --build ./MLX42/build
+	@cmake ./MLX42 -B ./MLX42/build
+	@cmake --build ./MLX42/build
 
 glfw:
-	git submodule init glfw
-	git submodule update glfw
-	cmake ./glfw -B ./glfw/build
-	cmake --build ./glfw/build
+	@git submodule init glfw
+	@git submodule update glfw
+	@cmake ./glfw -B ./glfw/build
+	@cmake --build ./glfw/build
 
 %.o: %.c
 	@echo "Compiling $<"

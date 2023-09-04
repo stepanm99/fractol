@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <math.h>
 #include "../MLX42/include/MLX42/MLX42.h"
 
 /*Struct for storing complex number*/
@@ -30,4 +34,5 @@ typedef struct man_num
 t_com_num	com_num_init(double real, double imag);
 t_com_num	com_multiplication(t_com_num num1, t_com_num num2);
 t_com_num	com_sum(t_com_num num1, t_com_num num2);
-void	mandelbrot_iteration(t_man_num *m_num);
+double 		com_abs_value(t_com_num num);
+void		mandelbrot_iteration(t_man_num *m_num);

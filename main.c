@@ -18,10 +18,12 @@
 // See README in the root project for more information.
 // -----------------------------------------------------------------------------
 
+#include "./src/fractol.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "./MLX42/include/MLX42/MLX42.h"
+#include <math.h>
+#include "../MLX42/include/MLX42/MLX42.h"
 
 #define WIDTH 640
 #define HEIGHT 480
@@ -61,7 +63,109 @@ void ft_randomize(void* param)
 	y = image->instances[0].y;
 }
 
-void	ft_mandelbrot(void* param)
+void ft_mandel_comp(void *param, double x, double y, double zoom, int iter)
+{
+	t_man_num	man_num;
+	double		div_x;
+	double		div_y;
+	int			x_c;
+	int			y_c;
+	int			i;
+
+	div_x = WIDTH / 4.0;
+	div_y = HEIGHT / 4.0;
+	x_c = 0.0;
+	y_c = 0.0;
+	i = 0;
+	while (y_c <= HEIGHT)
+	{
+		while (x_c <= WIDTH)
+		{
+			man_num.z = com_num_init(0.0, 0.0);
+			man_num.c = com_num_init(((x_c * div_x) - 2.0), ((x_c * div_y) - 2.0));
+			while (i <= iter)
+			{
+				if (((com_abs_value(man_num.z) > 4) && i > 5) || i == iter)
+				{
+					uint32_t color = ft_pixel(
+					255, // R
+					0, // G
+					0, // B
+					255  // A
+					);
+					mlx_put_pixel(image, x_c, y_c, color);
+					break ;
+				}
+				//printf("% f, % f, % f, %i\n", com_abs_value(man_num.z), man_num.z.real, man_num.z.imag, i);
+				mandelbrot_iteration(&man_num);
+				i++;
+			}
+			i = 0;
+			x_c++;
+		}
+		x_c = 0;
+		y_c++;
+	}
+}
+
+void ft_hook(void* param)
+{
+	mlx_t* mlx = param;
+
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(mlx);
+	if (mlx_is_key_down(mlx, MLX_KEY_UP))
+		image->instances[0].y -= 5;
+	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
+		image->instances[0].y += 5;
+	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+		image->instances[0].x -= 5;
+	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+		image->instances[0].x += 5;
+}
+
+// -----------------------------------------------------------------------------
+
+int32_t main(int32_t argc, const char* argv[])
+{
+	mlx_t* mlx;
+
+	// Gotta error check this stuff
+	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
+	{
+		puts(mlx_strerror(mlx_errno));
+		return(EXIT_FAILURE);
+	}
+	if (!(image = mlx_new_image(mlx, WIDTH, HEIGHT)))
+	{
+		mlx_close_window(mlx);
+		puts(mlx_strerror(mlx_errno));
+		return(EXIT_FAILURE);
+	}
+	if (mlx_image_to_window(mlx, image, 0, 0) == -1)
+	{
+		mlx_close_window(mlx);
+		puts(mlx_strerror(mlx_errno));
+		return(EXIT_FAILURE);
+	}
+	
+//	ft_randomize(mlx);
+	ft_mandel_comp(mlx, 0, 0, 1, 255);
+//	mlx_loop_hook(mlx, ft_randomize, mlx);
+	mlx_loop_hook(mlx, ft_hook, mlx);
+
+	mlx_loop(mlx);
+	mlx_terminate(mlx);
+	return (EXIT_SUCCESS);
+}
+
+
+
+
+
+
+
+/*void	ft_mandelbrot(void* param)
 {
 	float	xinc;
 	float	yinc;
@@ -121,61 +225,7 @@ void	ft_mandelbrot(void* param)
 		xcoor = 0;
 		ycoor++;
 	}
-}
-
-void ft_hook(void* param)
-{
-	mlx_t* mlx = param;
-
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx);
-	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-		image->instances[0].y -= 5;
-	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-		image->instances[0].y += 5;
-	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		image->instances[0].x -= 5;
-	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		image->instances[0].x += 5;
-}
-
-// -----------------------------------------------------------------------------
-
-int32_t main(int32_t argc, const char* argv[])
-{
-	mlx_t* mlx;
-
-	// Gotta error check this stuff
-	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
-	{
-		puts(mlx_strerror(mlx_errno));
-		return(EXIT_FAILURE);
-	}
-	if (!(image = mlx_new_image(mlx, 255, 255)))
-	{
-		mlx_close_window(mlx);
-		puts(mlx_strerror(mlx_errno));
-		return(EXIT_FAILURE);
-	}
-	if (mlx_image_to_window(mlx, image, 0, 0) == -1)
-	{
-		mlx_close_window(mlx);
-		puts(mlx_strerror(mlx_errno));
-		return(EXIT_FAILURE);
-	}
-	
-//	ft_randomize(mlx);
-//	ft_mandelbrot(mlx);
-	mlx_loop_hook(mlx, ft_randomize, mlx);
-	mlx_loop_hook(mlx, ft_hook, mlx);
-
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
-	return (EXIT_SUCCESS);
-}
-
-
-
+}*/
 
 
 

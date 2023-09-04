@@ -41,6 +41,14 @@ t_com_num	com_sum(t_com_num num1, t_com_num num2)
 	return (res);
 }
 
+double com_abs_value(t_com_num num)
+{
+	double	res;
+
+	res = sqrt((num.real * num.real) + (num.imag * num.imag));
+	return (res);
+}
+
 /*One iteration of mandelbrot equation, receives pointer to a struct with
 numbers for z and c for computation, directly changes z value in the struct*/
 void	mandelbrot_iteration(t_man_num *m_num)
