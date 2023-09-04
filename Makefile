@@ -36,6 +36,12 @@ libmlx:
 	cmake ./MLX42 -B ./MLX42/build
 	cmake --build ./MLX42/build
 
+glfw:
+	@git submodule init glfw
+	@git submodule update glfw
+	cmake ./glfw -B ./glfw/build
+	cmake --build ./glfw/build
+
 %.o: %.c
 	@echo "Compiling $<"
 	@$(CC) $(CFLAGS) -c $< -o $@
