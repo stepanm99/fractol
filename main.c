@@ -72,34 +72,45 @@ void ft_mandel_comp(void *param, double x, double y, double zoom, int iter)
 	int			y_c;
 	int			i;
 
-	div_x = WIDTH / 4.0;
-	div_y = HEIGHT / 4.0;
-	x_c = 0.0;
-	y_c = 0.0;
+	div_x =  2.47 / WIDTH;
+	div_y =  2.24 / HEIGHT;
+	x_c = 0;
+	y_c = 0;
 	i = 0;
 	while (y_c <= HEIGHT)
 	{
 		while (x_c <= WIDTH)
 		{
 			man_num.z = com_num_init(0.0, 0.0);
-			man_num.c = com_num_init(((x_c * div_x) - 2.0), ((x_c * div_y) - 2.0));
+			man_num.c = com_num_init(((x_c * div_x) - 2.0), ((x_c * div_y) - 1.12));
 			while (i <= iter)
 			{
-				if (((com_abs_value(man_num.z) > 4) && i > 5) || i == iter)
+				if (com_abs_value(man_num.z) > 4)
 				{
 					uint32_t color = ft_pixel(
-					255, // R
-					0, // G
-					0, // B
-					255  // A
-					);
+						i,	// R
+						i,	// G
+						i,	// B
+						255	// A
+						);
 					mlx_put_pixel(image, x_c, y_c, color);
 					break ;
 				}
-				//printf("% f, % f, % f, %i\n", com_abs_value(man_num.z), man_num.z.real, man_num.z.imag, i);
+
 				mandelbrot_iteration(&man_num);
 				i++;
 			}
+			if (i == iter)
+			{
+				uint32_t color = ft_pixel(
+						0,	// R
+						0,	// G
+						0,	// B
+						255	// A
+						);
+				mlx_put_pixel(image, x_c, y_c, color);
+			}
+			//printf("x: %i, y: %i, absolute: % f\n", x_c, y_c, com_abs_value(man_num.z));
 			i = 0;
 			x_c++;
 		}

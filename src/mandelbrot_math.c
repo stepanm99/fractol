@@ -45,7 +45,7 @@ double com_abs_value(t_com_num num)
 {
 	double	res;
 
-	res = sqrt((num.real * num.real) + (num.imag * num.imag));
+	res = (num.real * num.real) + (num.imag * num.imag);
 	return (res);
 }
 
