@@ -12,64 +12,7 @@
 
 #include <unistd.h>
 #include <stdio.h>
-
-
-/*Struct for storing complex number*/
-typedef struct com_num
-{
-	double	real;
-	double	imag;
-}	t_com_num;
-
-/*Struct for storing mandelbrot numbers for compputation*/
-typedef struct man_num
-{
-	t_com_num	z;
-	t_com_num	c;
-}	t_man_num;
-
-
-/*Initialization of a compplex number*/
-t_com_num	com_num_init(double real, double imag)
-{
-	t_com_num	res;
-
-	res.real = real;
-	res.imag = imag;
-	return (res);
-}
-
-/*Multiplication of two comlex numbers stored as t_com_num*/
-t_com_num	com_multiplication(t_com_num num1, t_com_num num2)
-{
-	t_com_num	res;
-
-	res.real = ((num1.real * num2.real) - (num1.imag * num2.imag));
-	res.imag = ((num1.real * num2.imag) + (num1.imag * num2.real));
-	return (res);
-}
-
-/*Sum of two complex numbers stored as t_com_num*/
-t_com_num	com_sum(t_com_num num1, t_com_num num2)
-{
-	t_com_num	res;
-
-	res.real = num1.real + num2.real;
-	res.imag = num1.imag + num2.imag;
-	return (res);
-}
-
-/*One iteration of mandelbrot equation, receives pointer to a struct with
-numbers for z and c for computation, directly changes z value in the struct*/
-void	mandelbrot_iteration(t_man_num *m_num)
-{
-	t_com_num	z_pow;
-	t_com_num	z_sum;
-
-	z_pow = com_multiplication(m_num->z, m_num->z);
-	z_sum = com_sum(z_pow, m_num->c);
-	m_num->z = z_sum;
-}
+#include "./src/fractol.h"
 
 int	main(void)
 {

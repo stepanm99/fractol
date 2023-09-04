@@ -12,7 +12,7 @@
 
 NAME = fractol
 #Sources:
-SRC = main.c src/test.c
+SRC = main.c src/mandelbrot_math.c
 #Libraries:
 MLX = ./MLX42
 MLXLIB = ./MLX42/build/libmlx42.a -Iinclude -lglfw -L"./glfw"   #/Users/$(USER)/.brew/opt/glfw/lib/
@@ -23,7 +23,7 @@ FLAGS = -Wall -Wextra -Werror
 
 OBJ	= $(SRC:.c=.o)
 
-all: $(NAME) libmlx glfw
+all: libmlx glfw $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "Linking $@"
