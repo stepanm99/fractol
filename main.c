@@ -82,7 +82,8 @@ void ft_mandel_comp(void *param, double x, double y, double zoom, int iter)
 		while (x_c <= WIDTH)
 		{
 			man_num.z = com_num_init(0.0, 0.0);
-			man_num.c = com_num_init(((x_c * div_x) - 2.0), ((y_c * div_y) - 1.12));
+			man_num.c = com_num_init(((((x_c * div_x) - 2.0) / zoom) + x),
+										((((y_c * div_y) - 1.12) / zoom) + y));
 			while (i <= iter)
 			{
 				if (com_abs_value(man_num.z) > 4)
@@ -161,7 +162,7 @@ int32_t main(int32_t argc, const char* argv[])
 	}
 	
 //	ft_randomize(mlx);
-	ft_mandel_comp(mlx, 0, 0, 1, 255);
+	ft_mandel_comp(mlx, -0.3, 0.0, 2, 255);
 //	mlx_loop_hook(mlx, ft_randomize, mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 
