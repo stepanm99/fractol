@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   mandelbrot_math.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:45:12 by smelicha          #+#    #+#             */
-/*   Updated: 2023/08/27 16:45:29 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/05 20:25:18 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 /*Initialization of a complex number*/
-t_com_num	com_num_init(double real, double imag)
+void	com_num_init(t_com_num *com_num, double real, double imag)
 {
-	t_com_num	res;
-
-	res.real = real;
-	res.imag = imag;
-	return (res);
+	com_num->real = real;
+	com_num->imag = imag;
 }
 
 /*Multiplication of two comlex numbers stored as t_com_num*/
@@ -45,18 +42,20 @@ double com_abs_value(t_com_num num)
 {
 	double	res;
 
-	res = (num.real * num.real) + (num.imag * num.imag);
+	res = ((num.real * num.real) + (num.imag * num.imag));
+//	printf("pseudoabsvalue: % f\n", res);
+//	printf("num.real = % f\tnum.imag = % f", num.real, num.imag);
 	return (res);
 }
 
 /*One iteration of mandelbrot equation, receives pointer to a struct with
 numbers for z and c for computation, directly changes z value in the struct*/
-void	mandelbrot_iteration(t_man_num *m_num)
+void	mandelbrot_iteration(t_man_dat *man_dat)
 {
 	t_com_num	z_pow;
 	t_com_num	z_sum;
 
-	z_pow = com_multiplication(m_num->z, m_num->z);
-	z_sum = com_sum(z_pow, m_num->c);
-	m_num->z = z_sum;
+	z_pow = com_multiplication(man_dat->man_num.z, man_dat->man_num.z);
+	z_sum = com_sum(z_pow, man_dat->man_num.c);
+	man_dat->man_num.z = z_sum;
 }
