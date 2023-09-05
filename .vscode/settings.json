@@ -4,6 +4,7 @@
 		"iterator": "c",
 		"atomic": "c",
 		"cstdint": "c",
-		"complex": "c"
+		"complex": "c",
+		"random": "c"
 	}
 }

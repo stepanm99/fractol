@@ -81,7 +81,12 @@ void ft_mandel_comp(t_man_dat *man_dat)
 			{
 				if (com_abs_value(man_dat->man_num.z) > 4)
 				{
-					mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ft_pixel(man_dat->i * 3, man_dat->i * 3, man_dat->i * 3, 255));
+					mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ((man_dat->i * 3) << 24 | (man_dat->i * 2) << 16 | (man_dat->i * 4) << 8 | 255));
+					break ;
+				}
+				else if (com_abs_value(man_dat->man_num.z) < 4 && man_dat->i == (man_dat->iter))
+				{
+					mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, 0x000000ff);
 					break ;
 				}
 				mandelbrot_iteration(man_dat);
