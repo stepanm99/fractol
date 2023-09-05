@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:06:41 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/05 20:57:09 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/05 21:39:57 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 #include <math.h>
 #include "MLX42/include/MLX42/MLX42.h"
 
-#define WIDTH 640
-#define HEIGHT 480
+#define WIDTH 1024
+#define HEIGHT 720
 
 static mlx_image_t* image;
 
@@ -70,32 +70,22 @@ void ft_mandel_comp(t_man_dat *man_dat)
 {
 	t_com_num	z_temp;
 
-	while (man_dat->y_c <= (HEIGHT - 1))
+	while (man_dat->y_c < HEIGHT)
 	{
-		while (man_dat->x_c <= (WIDTH - 1))
+		while (man_dat->x_c <= WIDTH)
 		{
 			com_num_init(&man_dat->man_num.z, 0.0, 0.0);
 			com_num_init(&man_dat->man_num.c, (((((double)man_dat->x_c * man_dat->div_x) - 2.0) / man_dat->zoom) + man_dat->x),
 										(((((double)man_dat->y_c * man_dat->div_y) - 1.12) /man_dat->zoom) + man_dat->y));
 			while (man_dat->i <= man_dat->iter)
 			{
-				if (com_abs_value(man_dat->man_num.z) > 4 && man_dat->i == 0)
-				{
-					mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ft_pixel(0, 0, 0, 255));
-					break ;
-				}
 				if (com_abs_value(man_dat->man_num.z) > 4)
 				{
-					mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ft_pixel(man_dat->i, man_dat->i, man_dat->i, 255));
+					mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ft_pixel(man_dat->i * 3, man_dat->i * 3, man_dat->i * 3, 255));
 					break ;
 				}
 				mandelbrot_iteration(man_dat);
 				man_dat->i++;
-			}
-			if (man_dat->i == man_dat->iter)
-			{
-				uint32_t color = ft_pixel(200, 0, 0, 255);
-				mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, color);
 			}
 			man_dat->i = 0;
 			man_dat->x_c++;
@@ -182,7 +172,7 @@ void ft_hook(void *param)
 	if (mlx_is_key_down(mlx, MLX_KEY_KP_SUBTRACT))
 	{
 		printf("-\n");
-		man_dat->zoom -= 0.1;
+		man_dat->zoom -= 0.3;
 		ft_mandel_comp(man_dat);
 	}
 }
