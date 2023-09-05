@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:06:41 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/02 14:43:03 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:22:47 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
-#include "../MLX42/include/MLX42/MLX42.h"
+#include "MLX42/include/MLX42/MLX42.h"
 
 #define WIDTH 640
 #define HEIGHT 480
@@ -77,9 +77,9 @@ void ft_mandel_comp(void *param, double x, double y, double zoom, int iter)
 	x_c = 0;
 	y_c = 0;
 	i = 0;
-	while (y_c <= HEIGHT)
+	while (y_c <= (HEIGHT - 1))
 	{
-		while (x_c <= WIDTH)
+		while (x_c <= (WIDTH - 1))
 		{
 			man_num.z = com_num_init(0.0, 0.0);
 			man_num.c = com_num_init(((((x_c * div_x) - 2.0) / zoom) + x),
