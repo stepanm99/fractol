@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/06 21:26:40 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/06 21:44:21 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ typedef struct lch_color
 	double	l;
 	double	c;
 	double	h;
+	double	x;
+	double	y;
+	double	z;
+	double	a1;
+	double	a2;
+	double	b1;
+	double	b2;
 	int		r;
 	int		g;
 	int		b;

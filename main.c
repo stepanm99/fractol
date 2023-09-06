@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:06:41 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/06 21:26:14 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/06 21:43:51 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ void ft_randomize(void* param)
 void	ft_mandel_inside_color(t_man_dat *man_dat)
 {
 	mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, 0x000000ff);
+}
+
+void	ft_lhc_to_rgb(t_man_dat *man_dat)
+{
+	
 }
 
 void	ft_mandel_outside_color(t_man_dat *man_dat)
@@ -239,6 +244,13 @@ void ft_lch_init(t_lch_color *lch_color)
 	lch_color->l = 0.0;
 	lch_color->c = 0.0;
 	lch_color->h = 0.0;
+	lch_color->x = 0.0;
+	lch_color->y = 0.0;
+	lch_color->z = 0.0;
+	lch_color->a1 = 0.0;
+	lch_color->a2 = 0.0;
+	lch_color->b1 = 0.0;
+	lch_color->b2 = 0.0;
 	lch_color->r = 0;
 	lch_color->g = 0;
 	lch_color->b = 0;

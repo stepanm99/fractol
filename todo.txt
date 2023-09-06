@@ -6,3 +6,7 @@
 
 useful stuff:
 removing files recursively by extension: https://unix.stackexchange.com/questions/116389/recursively-delete-all-files-with-a-given-extension
+
+https://stackoverflow.com/questions/7530627/hcl-color-to-rgb-and-backward
+https://mina86.com/2021/srgb-lab-lchab-conversions/
+http://www.brucelindbloom.com/index.html?Math.html
