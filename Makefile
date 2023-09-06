@@ -6,7 +6,7 @@
 #    By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 16:06:38 by smelicha          #+#    #+#              #
-#    Updated: 2023/08/31 15:55:10 by smelicha         ###   ########.fr        #
+#    Updated: 2023/09/06 15:31:26 by smelicha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBMLX = ./MLX42/build/libmlx42.a
 MATHLIB = -lm
 #Compiler stuff:
 CC = cc
-FLAGS = -Wall -Wextra -Werror -O2
+FLAGS = -Wall -Wextra -Werror -O3
 
 OBJ	= $(SRC:.c=.o)
 

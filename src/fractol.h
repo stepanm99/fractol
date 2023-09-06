@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/05 18:59:43 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/06 19:37:16 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ typedef struct man_dat
 }	t_man_dat;
 
 /*Math functions for mandelbrot*/
-void	com_num_init(t_com_num *com_num, double real, double imag);
+void		com_num_init(t_com_num *com_num, double real, double imag);
 t_com_num	com_multiplication(t_com_num num1, t_com_num num2);
 t_com_num	com_sum(t_com_num num1, t_com_num num2);
-double 		com_abs_value(t_com_num num);
-void		mandelbrot_iteration(t_man_dat *man_dat);
+double		com_abs_value(t_com_num num);
+void		ft_mandel_iteration(t_man_dat *man_dat);
+void		ft_mandel_comp(t_man_dat *man_dat);
 
 #endif

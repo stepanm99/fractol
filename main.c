@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:06:41 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/05 21:39:57 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/06 19:35:56 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 #include <math.h>
 #include "MLX42/include/MLX42/MLX42.h"
 
-#define WIDTH 1024
-#define HEIGHT 720
+#define WIDTH 640
+#define HEIGHT 480
 
 static mlx_image_t* image;
 
@@ -65,33 +65,41 @@ void ft_randomize(void* param)
 }
 */
 
+void	ft_mandel_iteration(t_man_dat *man_dat)
+{
+	t_com_num	z_pow;
+
+	while (man_dat->i <= man_dat->iter)
+	{
+		if (com_abs_value(man_dat->man_num.z) > 4.0)
+		{
+			mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ((man_dat->i * 12) << 24 | (man_dat->i * 8) << 16 | (man_dat->i * 16) << 8 | 255));
+			break ;
+		}
+		else if (com_abs_value(man_dat->man_num.z) < 4 && man_dat->i == (man_dat->iter))
+		{
+			mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, 0x000000ff);
+			break ;
+		}
+		z_pow = com_multiplication(man_dat->man_num.z, man_dat->man_num.z);
+		man_dat->man_num.z = com_sum(z_pow, man_dat->man_num.c);
+		man_dat->i++;
+	}
+}
+
+
+
 /*mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ft_pixel(255, 0, 0, 255));*/
 void ft_mandel_comp(t_man_dat *man_dat)
 {
-	t_com_num	z_temp;
-
 	while (man_dat->y_c < HEIGHT)
 	{
-		while (man_dat->x_c <= WIDTH)
+		while (man_dat->x_c < WIDTH)
 		{
 			com_num_init(&man_dat->man_num.z, 0.0, 0.0);
 			com_num_init(&man_dat->man_num.c, (((((double)man_dat->x_c * man_dat->div_x) - 2.0) / man_dat->zoom) + man_dat->x),
 										(((((double)man_dat->y_c * man_dat->div_y) - 1.12) /man_dat->zoom) + man_dat->y));
-			while (man_dat->i <= man_dat->iter)
-			{
-				if (com_abs_value(man_dat->man_num.z) > 4)
-				{
-					mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ((man_dat->i * 3) << 24 | (man_dat->i * 2) << 16 | (man_dat->i * 4) << 8 | 255));
-					break ;
-				}
-				else if (com_abs_value(man_dat->man_num.z) < 4 && man_dat->i == (man_dat->iter))
-				{
-					mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, 0x000000ff);
-					break ;
-				}
-				mandelbrot_iteration(man_dat);
-				man_dat->i++;
-			}
+			ft_mandel_iteration(man_dat);
 			man_dat->i = 0;
 			man_dat->x_c++;
 		}
@@ -121,7 +129,7 @@ void ft_mandel_comp(void *param, t_man_dat *man_dat)
 					break ;
 				}
 
-				mandelbrot_iteration(man_dat);
+				mandelbrot_one_iteration(man_dat);
 				man_dat->i++;
 			}
 			if (man_dat->i == man_dat->iter)
@@ -171,7 +179,7 @@ void ft_hook(void *param)
 	if (mlx_is_key_down(mlx, MLX_KEY_KP_ADD))
 	{
 		printf("+\n");
-		man_dat->zoom += 0.1;
+		man_dat->zoom += 0.3;
 		ft_mandel_comp(man_dat);
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_KP_SUBTRACT))
@@ -216,7 +224,7 @@ t_man_dat	*man_dat_init(mlx_t *mlx)
 	if (!man_dat)
 		return (NULL);
 	man_dat->mlx = mlx;
-	com_num_init(&man_dat->man_num.z, 5.0, 5.0);
+	com_num_init(&man_dat->man_num.z, 0.0, 0.0);
 	com_num_init(&man_dat->man_num.c, 0.0, 0.0);
 	man_dat->div_x = 2.47 / WIDTH;
 	man_dat->div_y = 2.24 / HEIGHT;
@@ -225,9 +233,8 @@ t_man_dat	*man_dat_init(mlx_t *mlx)
 	man_dat->zoom = 1.0;
 	man_dat->x_c = 0;
 	man_dat->y_c = 0;
-	man_dat->iter = 250;
+	man_dat->iter = 2500;
 	man_dat->i = 0;
-	printf("% f\n", man_dat->man_num.z.real);
 	return (man_dat);
 }
 
