@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:06:41 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/06 19:41:19 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/06 21:26:14 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void ft_randomize(void* param)
 }
 */
 
+
+
 void	ft_mandel_inside_color(t_man_dat *man_dat)
 {
 	mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, 0x000000ff);
@@ -72,7 +74,12 @@ void	ft_mandel_inside_color(t_man_dat *man_dat)
 
 void	ft_mandel_outside_color(t_man_dat *man_dat)
 {
-	mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ((man_dat->i * 12) << 24 | (man_dat->i * 8) << 16 | (man_dat->i * 16) << 8 | 255));
+	man_dat->lch_color.s = (double)man_dat->i / (double)man_dat->iter;
+	man_dat->lch_color.v = 1.0 - pow((cos(3.14159265359 * man_dat->lch_color.s)), 2.0);
+	man_dat->lch_color.l = (75.0 - (75.0 * man_dat->lch_color.v));
+	man_dat->lch_color.c = 28 + man_dat->lch_color.l;
+	man_dat->lch_color.h = (int)pow((360 * man_dat->lch_color.s), 1.5) % 360;
+	mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ((man_dat->i * 5) << 24 | (man_dat->i * 30) << 16 | (man_dat->i * 12) << 8 | 255));
 }
 
 void	ft_mandel_iteration(t_man_dat *man_dat)
@@ -225,6 +232,17 @@ void ft_hook(void *param)
 	i = 0;
 */
 
+void ft_lch_init(t_lch_color *lch_color)
+{
+	lch_color->s = 0.0;
+	lch_color->v = 0.0;
+	lch_color->l = 0.0;
+	lch_color->c = 0.0;
+	lch_color->h = 0.0;
+	lch_color->r = 0;
+	lch_color->g = 0;
+	lch_color->b = 0;
+}
 
 t_man_dat	*man_dat_init(mlx_t *mlx)
 {
@@ -236,6 +254,7 @@ t_man_dat	*man_dat_init(mlx_t *mlx)
 	man_dat->mlx = mlx;
 	com_num_init(&man_dat->man_num.z, 0.0, 0.0);
 	com_num_init(&man_dat->man_num.c, 0.0, 0.0);
+	ft_lch_init(&man_dat->lch_color);
 	man_dat->div_x = 2.47 / WIDTH;
 	man_dat->div_y = 2.24 / HEIGHT;
 	man_dat->x = 0.0;
@@ -243,7 +262,7 @@ t_man_dat	*man_dat_init(mlx_t *mlx)
 	man_dat->zoom = 1.0;
 	man_dat->x_c = 0;
 	man_dat->y_c = 0;
-	man_dat->iter = 2500;
+	man_dat->iter = 250;
 	man_dat->i = 0;
 	return (man_dat);
 }

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/06 19:41:32 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/06 21:26:40 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,24 @@ typedef struct man_num
 	t_com_num	c;
 }	t_man_num;
 
+typedef struct lch_color
+{
+	double	s;
+	double	v;
+	double	l;
+	double	c;
+	double	h;
+	int		r;
+	int		g;
+	int		b;
+}	t_lch_color;
+
 /*Madelbrot set data struct*/
 typedef struct man_dat
 {
 	mlx_t		*mlx;
 	t_man_num	man_num;
+	t_lch_color	lch_color;
 	double		div_x;
 	double		div_y;
 	double		x;
