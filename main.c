@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:06:41 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/06 19:35:56 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/06 19:41:19 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,16 @@ void ft_randomize(void* param)
 }
 */
 
+void	ft_mandel_inside_color(t_man_dat *man_dat)
+{
+	mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, 0x000000ff);
+}
+
+void	ft_mandel_outside_color(t_man_dat *man_dat)
+{
+	mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ((man_dat->i * 12) << 24 | (man_dat->i * 8) << 16 | (man_dat->i * 16) << 8 | 255));
+}
+
 void	ft_mandel_iteration(t_man_dat *man_dat)
 {
 	t_com_num	z_pow;
@@ -73,12 +83,12 @@ void	ft_mandel_iteration(t_man_dat *man_dat)
 	{
 		if (com_abs_value(man_dat->man_num.z) > 4.0)
 		{
-			mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ((man_dat->i * 12) << 24 | (man_dat->i * 8) << 16 | (man_dat->i * 16) << 8 | 255));
+			ft_mandel_outside_color(man_dat);
 			break ;
 		}
 		else if (com_abs_value(man_dat->man_num.z) < 4 && man_dat->i == (man_dat->iter))
 		{
-			mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, 0x000000ff);
+			ft_mandel_inside_color(man_dat);
 			break ;
 		}
 		z_pow = com_multiplication(man_dat->man_num.z, man_dat->man_num.z);
