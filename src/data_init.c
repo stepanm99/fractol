@@ -12,6 +12,7 @@
 
 #include "../incl/fractol.h"
 
+/*Initialization of main data struct*/
 t_dt	*ft_dt_init(void)
 {
 	t_dt	*dt;

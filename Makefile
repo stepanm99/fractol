@@ -20,7 +20,7 @@ LIBMLX = ./MLX42/build/libmlx42.a
 MATHLIB = -lm
 #Compiler stuff:
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -Og
+FLAGS = -Wall -Wextra -Werror -O3
 
 OBJ	= $(SRC:.c=.o)
 

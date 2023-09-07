@@ -49,25 +49,25 @@ void	ft_hook(void *param)
 		man_dat->x -= 0.1 / man_dat->zoom;
 		ft_mandel_comp(man_dat);
 	}
-	if (mlx_is_key_down(mlx, MLX_KEY_KP_ADD))
+	if (mlx_is_key_down(mlx, MLX_KEY_PAGE_DOWN))
 	{
 		printf("+\n");
 		man_dat->zoom += man_dat->zoom / 3;
 		ft_mandel_comp(man_dat);
 	}
-	if (mlx_is_key_down(mlx, MLX_KEY_KP_SUBTRACT))
+	if (mlx_is_key_down(mlx, MLX_KEY_PAGE_UP))
 	{
 		printf("-\n");
 		man_dat->zoom -= man_dat->zoom / 3;
 		ft_mandel_comp(man_dat);
 	}
-	if (mlx_is_key_down(mlx, MLX_KEY_KP_MULTIPLY))
+	if (mlx_is_key_down(mlx, MLX_KEY_I))
 	{
 		man_dat->iter += 50;
 		printf("iter: %i\n", man_dat->iter);
 		ft_mandel_comp(man_dat);
 	}
-	if (mlx_is_key_down(mlx, MLX_KEY_KP_DIVIDE))
+	if (mlx_is_key_down(mlx, MLX_KEY_K))
 	{
 		man_dat->iter -= 50;
 		printf("iter: %i\n", man_dat->iter);
