@@ -16,7 +16,7 @@
 	this function computes the colors, otherwise it defaults black*/
 void	ft_mandel_inside_color(t_man_dat *man_dat)
 {
-	mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, 0x000000ff);
+	mlx_put_pixel(man_dat->image, man_dat->x_c, man_dat->y_c, 0x000000ff);
 }
 
 /*Computes color for points outside of the mandelbrot set*/
@@ -25,7 +25,7 @@ void	ft_mandel_outside_color(t_man_dat *man_dat)
 	double	smooth_coef;
 
 	smooth_coef = (ft_com_abs_value(man_dat->man_num.z) - 2.0) * 7;
-	mlx_put_pixel(image, man_dat->x_c, man_dat->y_c,
+	mlx_put_pixel(man_dat->image, man_dat->x_c, man_dat->y_c,
 		((int)((man_dat->i + smooth_coef) * 8) << 24
 			| (int)(man_dat->i + smooth_coef) * 5 << 16
 			| (int)(man_dat->i + smooth_coef) * 6 << 8 | 255));
@@ -59,9 +59,9 @@ void	ft_mandel_iteration(t_man_dat *man_dat)
 /*Algorithm to compute all points of the image*/
 void	ft_mandel_comp(t_man_dat *man_dat)
 {
-	while (man_dat->y_c < HEIGHT)
+	while (man_dat->y_c < man_dat->height)
 	{
-		while (man_dat->x_c < WIDTH)
+		while (man_dat->x_c < man_dat->width)
 		{
 			ft_com_num_init(&man_dat->man_num.z, 0.0, 0.0);
 			ft_com_num_init(&man_dat->man_num.c,

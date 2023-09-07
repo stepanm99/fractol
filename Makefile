@@ -19,8 +19,8 @@ MLXLIB = ./MLX42/build/libmlx42.a -Iinclude -lglfw -L"./glfw"   #/Users/$(USER)/
 LIBMLX = ./MLX42/build/libmlx42.a
 MATHLIB = -lm
 #Compiler stuff:
-CC = cc
-FLAGS = -Wall -Wextra -Werror -O3
+CC = gcc
+FLAGS = -Wall -Wextra -Werror -Og
 
 OBJ	= $(SRC:.c=.o)
 

@@ -57,6 +57,7 @@ typedef struct dt
 {
 	int			width;
 	int			height;
+	mlx_t* 		mlx;
 	mlx_image_t	*image;
 	t_man_dat	*man_dat;
 }	t_dt;
@@ -70,6 +71,7 @@ void		ft_mandel_iteration(t_man_dat *man_dat);
 void		ft_mandel_comp(t_man_dat *man_dat);
 void		ft_mandel_inside_color(t_man_dat *man_dat);
 void		ft_mandel_outside_color(t_man_dat *man_dat);
-t_man_dat	*ft_man_dat_init(mlx_t *mlx);
+void		*ft_man_dat_init(t_dt *dt);
+t_dt		*ft_dt_init(void);
 
 #endif
