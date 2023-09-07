@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:06:41 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/07 17:20:02 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:32:48 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,6 @@ void	ft_mandel_outside_color(t_man_dat *man_dat)
 	double	smooth_coef;
 
 	smooth_coef = com_abs_value(man_dat->man_num.z) - 4.0;
-/*	man_dat->lch_color.s = (double)man_dat->i / (double)man_dat->iter;
-	man_dat->lch_color.v = 1.0 - pow((cos(3.14159265359 * man_dat->lch_color.s)), 2.0);
-	man_dat->lch_color.l = (75.0 - (75.0 * man_dat->lch_color.v));
-	man_dat->lch_color.c = 28 + man_dat->lch_color.l;
-	man_dat->lch_color.h = (int)pow((360 * man_dat->lch_color.s), 1.5) % 360;*/
 	mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ((int)((man_dat->i + smooth_coef) * 8) << 24 | (int)(man_dat->i + smooth_coef) * 5 << 16 | (int)(man_dat->i + smooth_coef) * 6 << 8 | 255));
 }
 
@@ -252,25 +247,6 @@ void ft_hook(void *param)
 	i = 0;
 */
 
-void ft_lch_init(t_lch_color *lch_color)
-{
-	lch_color->s = 0.0;
-	lch_color->v = 0.0;
-	lch_color->l = 0.0;
-	lch_color->c = 0.0;
-	lch_color->h = 0.0;
-	lch_color->x = 0.0;
-	lch_color->y = 0.0;
-	lch_color->z = 0.0;
-	lch_color->a1 = 0.0;
-	lch_color->a2 = 0.0;
-	lch_color->b1 = 0.0;
-	lch_color->b2 = 0.0;
-	lch_color->r = 0;
-	lch_color->g = 0;
-	lch_color->b = 0;
-}
-
 t_man_dat	*man_dat_init(mlx_t *mlx)
 {
 	t_man_dat	*man_dat;
@@ -281,7 +257,6 @@ t_man_dat	*man_dat_init(mlx_t *mlx)
 	man_dat->mlx = mlx;
 	com_num_init(&man_dat->man_num.z, 0.0, 0.0);
 	com_num_init(&man_dat->man_num.c, 0.0, 0.0);
-	ft_lch_init(&man_dat->lch_color);
 	man_dat->div_x = 2.47 / WIDTH;
 	man_dat->div_y = 2.24 / HEIGHT;
 	man_dat->x = 0.0;
