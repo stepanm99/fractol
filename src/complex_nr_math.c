@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot_math.c                                  :+:      :+:    :+:   */
+/*   complex_nr_math.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/27 16:45:12 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/06 19:36:02 by smelicha         ###   ########.fr       */
+/*   Created: 2023/09/07 17:59:20 by smelicha          #+#    #+#             */
+/*   Updated: 2023/09/07 18:15:57 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../incl/fractol.h"
 
 /*Initialization of a complex number*/
-void	com_num_init(t_com_num *com_num, double real, double imag)
+void	ft_com_num_init(t_com_num *com_num, double real, double imag)
 {
 	com_num->real = real;
 	com_num->imag = imag;
 }
 
 /*Multiplication of two comlex numbers stored as t_com_num*/
-t_com_num	com_multiplication(t_com_num num1, t_com_num num2)
+t_com_num	ft_com_multiplication(t_com_num num1, t_com_num num2)
 {
 	t_com_num	res;
 
@@ -28,8 +28,9 @@ t_com_num	com_multiplication(t_com_num num1, t_com_num num2)
 	res.imag = ((num1.real * num2.imag) + (num1.imag * num2.real));
 	return (res);
 }
+
 /*Sum of two complex numbers stored as t_com_num*/
-t_com_num	com_sum(t_com_num num1, t_com_num num2)
+t_com_num	ft_com_sum(t_com_num num1, t_com_num num2)
 {
 	t_com_num	res;
 
@@ -38,7 +39,7 @@ t_com_num	com_sum(t_com_num num1, t_com_num num2)
 	return (res);
 }
 
-double com_abs_value(t_com_num num)
+double	ft_com_abs_value(t_com_num num)
 {
-	return (((num.real * num.real) + (num.imag * num.imag)));
+	return (sqrt((num.real * num.real) + (num.imag * num.imag)));
 }

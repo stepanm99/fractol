@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/07 17:33:07 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/07 18:33:42 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,39 @@ typedef struct man_num
 typedef struct man_dat
 {
 	mlx_t		*mlx;
+	mlx_image_t	*image;
 	t_man_num	man_num;
 	double		div_x;
 	double		div_y;
 	double		x;
 	double		y;
 	double		zoom;
+	int			width;
+	int			height;
 	int			x_c;
 	int			y_c;
 	int			iter;
 	int			i;
 }	t_man_dat;
 
+/*All data program needs*/
+typedef struct dt
+{
+	int			width;
+	int			height;
+	mlx_image_t	*image;
+	t_man_dat	*man_dat;
+}	t_dt;
+
 /*Math functions for mandelbrot*/
-void		com_num_init(t_com_num *com_num, double real, double imag);
-t_com_num	com_multiplication(t_com_num num1, t_com_num num2);
-t_com_num	com_sum(t_com_num num1, t_com_num num2);
-double		com_abs_value(t_com_num num);
+void		ft_com_num_init(t_com_num *com_num, double real, double imag);
+t_com_num	ft_com_multiplication(t_com_num num1, t_com_num num2);
+t_com_num	ft_com_sum(t_com_num num1, t_com_num num2);
+double		ft_com_abs_value(t_com_num num);
 void		ft_mandel_iteration(t_man_dat *man_dat);
 void		ft_mandel_comp(t_man_dat *man_dat);
-void	ft_mandel_inside_color(t_man_dat *man_dat);
-void	ft_mandel_outside_color(t_man_dat *man_dat);
+void		ft_mandel_inside_color(t_man_dat *man_dat);
+void		ft_mandel_outside_color(t_man_dat *man_dat);
+t_man_dat	*ft_man_dat_init(mlx_t *mlx);
 
 #endif
