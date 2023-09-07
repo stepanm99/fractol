@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:06:41 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/06 21:43:51 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:20:02 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,15 @@ void	ft_lhc_to_rgb(t_man_dat *man_dat)
 
 void	ft_mandel_outside_color(t_man_dat *man_dat)
 {
-	man_dat->lch_color.s = (double)man_dat->i / (double)man_dat->iter;
+	double	smooth_coef;
+
+	smooth_coef = com_abs_value(man_dat->man_num.z) - 4.0;
+/*	man_dat->lch_color.s = (double)man_dat->i / (double)man_dat->iter;
 	man_dat->lch_color.v = 1.0 - pow((cos(3.14159265359 * man_dat->lch_color.s)), 2.0);
 	man_dat->lch_color.l = (75.0 - (75.0 * man_dat->lch_color.v));
 	man_dat->lch_color.c = 28 + man_dat->lch_color.l;
-	man_dat->lch_color.h = (int)pow((360 * man_dat->lch_color.s), 1.5) % 360;
-	mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ((man_dat->i * 5) << 24 | (man_dat->i * 30) << 16 | (man_dat->i * 12) << 8 | 255));
+	man_dat->lch_color.h = (int)pow((360 * man_dat->lch_color.s), 1.5) % 360;*/
+	mlx_put_pixel(image, man_dat->x_c, man_dat->y_c, ((int)((man_dat->i + smooth_coef) * 8) << 24 | (int)(man_dat->i + smooth_coef) * 5 << 16 | (int)(man_dat->i + smooth_coef) * 6 << 8 | 255));
 }
 
 void	ft_mandel_iteration(t_man_dat *man_dat)
@@ -201,13 +204,25 @@ void ft_hook(void *param)
 	if (mlx_is_key_down(mlx, MLX_KEY_KP_ADD))
 	{
 		printf("+\n");
-		man_dat->zoom += 0.3;
+		man_dat->zoom += man_dat->zoom / 3;
 		ft_mandel_comp(man_dat);
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_KP_SUBTRACT))
 	{
 		printf("-\n");
-		man_dat->zoom -= 0.3;
+		man_dat->zoom -= man_dat->zoom / 3;
+		ft_mandel_comp(man_dat);
+	}
+	if (mlx_is_key_down(mlx, MLX_KEY_KP_MULTIPLY))
+	{
+		man_dat->iter += 50;
+		printf("iter: %i\n", man_dat->iter);
+		ft_mandel_comp(man_dat);
+	}
+	if (mlx_is_key_down(mlx, MLX_KEY_KP_DIVIDE))
+	{
+		man_dat->iter -= 50;
+		printf("iter: %i\n", man_dat->iter);
 		ft_mandel_comp(man_dat);
 	}
 }
