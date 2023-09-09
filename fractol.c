@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/09 17:21:28 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/09 18:30:03 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 void	ft_hook(void *param)
 {
-	t_man_dat	*man_dat;
+	t_dt	*dt;
 
-	man_dat = param;
-	ft_key_control(man_dat);
+	dt = param;
+	ft_key_control(dt);
 }
 
 int	main(int argc, const char *argv[])
@@ -45,7 +45,7 @@ int	main(int argc, const char *argv[])
 	}
 	ft_man_dat_init(dt);
 	ft_mandel_comp(dt->man_dat);
-	mlx_loop_hook(dt->mlx, ft_hook, dt->man_dat);
+	mlx_loop_hook(dt->mlx, ft_hook, dt);
 	mlx_loop(dt->mlx);
 	mlx_terminate(dt->mlx);
 	free(dt->man_dat);

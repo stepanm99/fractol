@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/09 17:19:46 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/09 19:37:23 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ typedef struct dt
 
 /*Program functions*/
 t_dt		*ft_dt_init(void);
-void		ft_key_control(t_man_dat *man_dat);
+void		ft_key_control(t_dt *dt);
 
 /*Functions for working with complex numbers*/
 void		ft_com_num_init(t_com_num *com_num, double real, double imag);
@@ -100,5 +100,6 @@ void		ft_mandel_outside_color(t_man_dat *man_dat);
 
 /*Functions for Julia set; shares struct and functions with Mandelbrot set*/
 void		ft_jul_comp(t_man_dat *man_dat);
+void		ft_get_jul(t_man_dat *man_dat);
 
 #endif
