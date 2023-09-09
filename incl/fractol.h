@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/09 16:30:43 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/09 17:19:46 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ typedef struct man_num
 
 /*
 -----------------Madelbrot set data struct-----------------
+used also for computing Julia set
+
 div_x, div_y	<-- width of complex plane divided by width in pixels
 					=> width of an pixel on a complex plane
+jul_x, jul_y	<-- complex plane coordinates for computing Julia set
 x, y			<-- complex plane coordinates to shift image in the plane
 zoom			<-- zoom
 width, height	<-- of the picture in pixels
@@ -52,6 +55,8 @@ typedef struct man_dat
 	t_man_num	man_num;
 	double		div_x;
 	double		div_y;
+	double		jul_x;
+	double		jul_y;
 	double		x;
 	double		y;
 	double		zoom;
@@ -77,18 +82,23 @@ typedef struct dt
 }	t_dt;
 
 /*Program functions*/
+t_dt		*ft_dt_init(void);
 void		ft_key_control(t_man_dat *man_dat);
 
-/*Functions for mandelbrot*/
+/*Functions for working with complex numbers*/
 void		ft_com_num_init(t_com_num *com_num, double real, double imag);
 t_com_num	ft_com_multiplication(t_com_num num1, t_com_num num2);
 t_com_num	ft_com_sum(t_com_num num1, t_com_num num2);
 double		ft_com_abs_value(t_com_num num);
-void		ft_mandel_iteration(t_man_dat *man_dat);
+
+/*Functions for Mandelbrot set*/
+void		*ft_man_dat_init(t_dt *dt);
 void		ft_mandel_comp(t_man_dat *man_dat);
+void		ft_mandel_iteration(t_man_dat *man_dat);
 void		ft_mandel_inside_color(t_man_dat *man_dat);
 void		ft_mandel_outside_color(t_man_dat *man_dat);
-void		*ft_man_dat_init(t_dt *dt);
-t_dt		*ft_dt_init(void);
+
+/*Functions for Julia set; shares struct and functions with Mandelbrot set*/
+void		ft_jul_comp(t_man_dat *man_dat);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:29:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/07 18:39:46 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/09 17:12:01 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	*ft_man_dat_init(t_dt *dt)
 	ft_com_num_init(&man_dat->man_num.c, 0.0, 0.0);
 	man_dat->div_x = 2.47 / dt->width;
 	man_dat->div_y = 2.24 / dt->height;
+	man_dat->jul_x = 0.0;
+	man_dat->jul_y = 0.0;
 	man_dat->x = 0.0;
 	man_dat->y = 0.0;
 	man_dat->zoom = 1.0;

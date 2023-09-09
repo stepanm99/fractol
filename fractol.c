@@ -6,17 +6,12 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/09 16:29:55 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/09 17:21:28 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "./incl/fractol.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-
-
 
 void	ft_hook(void *param)
 {
