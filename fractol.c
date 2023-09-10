@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/09 18:30:03 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/10 18:09:30 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int argc, const char *argv[])
 	ft_man_dat_init(dt);
 	ft_mandel_comp(dt->man_dat);
 	mlx_loop_hook(dt->mlx, ft_hook, dt);
+	mlx_scroll_hook(dt->mlx, ft_scroll, dt);
 	mlx_loop(dt->mlx);
 	mlx_terminate(dt->mlx);
 	free(dt->man_dat);

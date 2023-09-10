@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/09 19:37:23 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/10 18:21:06 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct dt
 /*Program functions*/
 t_dt		*ft_dt_init(void);
 void		ft_key_control(t_dt *dt);
+void		ft_scroll(double xdelta, double ydelta, void *param);
 
 /*Functions for working with complex numbers*/
 void		ft_com_num_init(t_com_num *com_num, double real, double imag);

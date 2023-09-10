@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:29:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/09 19:39:40 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/10 18:32:32 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ void ft_put_fractal(t_dt *dt)
 	{
 		ft_jul_comp(man_dat);
 	}
+}
+
+void	ft_scroll(double xdelta, double ydelta, void *param)
+{
+	t_dt	*dt;
+	int		x;
+	int		y;
+
+	dt = param;
+	mlx_get_mouse_pos(dt->mlx, &x, &y);
+	dt->man_dat->zoom += ydelta;
+	ft_put_fractal(dt);
 }
 
 void	ft_key_control(t_dt *dt)
