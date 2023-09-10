@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:29:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/10 18:32:32 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/10 20:34:48 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,28 @@ void ft_put_fractal(t_dt *dt)
 
 void	ft_scroll(double xdelta, double ydelta, void *param)
 {
-	t_dt	*dt;
-	int		x;
-	int		y;
+	t_dt		*dt;
+	t_man_dat	*man_dat;
+	int			x;
+	int			y;
 
 	dt = param;
+	man_dat = dt->man_dat;
 	mlx_get_mouse_pos(dt->mlx, &x, &y);
 	dt->man_dat->zoom += ydelta;
+	if (ydelta > 0)
+	{
+	dt->man_dat->x += ((((double)x * man_dat->div_x) - 2.0)
+						/ man_dat->zoom);
+	dt->man_dat->y += ((((double)y * man_dat->div_y) - 1.12)
+						/ man_dat->zoom);
+	} else
+	{
+	dt->man_dat->x -= ((((double)x * man_dat->div_x) - 2.0)
+						/ man_dat->zoom);
+	dt->man_dat->y -= ((((double)y * man_dat->div_y) - 1.12)
+						/ man_dat->zoom);
+	}
 	ft_put_fractal(dt);
 }
 
