@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:29:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/10 20:34:48 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:31:14 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,8 @@ void	ft_scroll(double xdelta, double ydelta, void *param)
 	dt->man_dat->zoom += ydelta;
 	if (ydelta > 0)
 	{
-	dt->man_dat->x += ((((double)x * man_dat->div_x) - 2.0)
-						/ man_dat->zoom);
-	dt->man_dat->y += ((((double)y * man_dat->div_y) - 1.12)
-						/ man_dat->zoom);
+	dt->man_dat->x *= (double)x / ((double)man_dat->width / 2);
+	dt->man_dat->y *= (double)y / ((double)man_dat->height / 2);
 	} else
 	{
 	dt->man_dat->x -= ((((double)x * man_dat->div_x) - 2.0)
