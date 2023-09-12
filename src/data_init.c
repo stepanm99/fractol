@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:29:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/12 17:26:18 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/12 20:32:32 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,31 @@ void	ft_man_dat_init_1(t_man_dat *man_dat)
 	man_dat->man_col.r_coef = 8;
 	man_dat->man_col.g_coef = 5;
 	man_dat->man_col.b_coef = 6;
+}
+
+void	*ft_new_dat_init(t_dt *dt)
+{
+	t_new_dat	*new_dat;
+
+	new_dat = malloc(sizeof(t_new_dat));
+	if (!new_dat)
+		return (NULL);
+	new_dat->mlx = dt->mlx;
+	new_dat->image = dt->image;
+	new_dat->width = dt->width;
+	new_dat->height = dt->height;
+	ft_com_num_init(&new_dat->z, 0.0, 0.0);
+	ft_com_num_init(&new_dat->func_res, 0.0, 0.0);
+	ft_com_num_init(&new_dat->deri_res, 0.0, 0.0);
+	new_dat->tolerance = 0.000001;
+	new_dat->iter = 50;
+	new_dat->i = 0;
+	new_dat->x_div = 2.47 / dt->width;
+	new_dat->y_div = 2.24 / dt->height;
+	new_dat->x = 0.0;
+	new_dat->y = 0.0;
+	new_dat->zoom = 1.0;
+	return (new_dat);
 }
 
 /*Initialization of mandelbrot data struct*/

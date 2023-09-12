@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/12 18:52:33 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/12 20:29:43 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,36 @@ typedef struct man_dat
 }	t_man_dat;
 
 /*
+-----------------Newton fractal data struct-----------------
+z				<-- complex number to compute with
+func_res		<-- result of normal function
+deri_res		<-- result of derivative of the former function
+roots[3]		<-- array with roots of the polynom
+tolerance		<-- of the points' distance from root
+iter			<-- limit of iterations
+i				<-- current iteration
+*/
+typedef struct new_dat
+{
+	mlx_t		*mlx;
+	mlx_image_t	*image;
+	t_com_num	z;
+	t_com_num	func_res;
+	t_com_num	deri_res;
+	t_com_num	roots[3];
+	double		x_div;
+	double		y_div;
+	double		x;
+	double		y;
+	double		zoom;
+	double		tolerance;
+	int			width;
+	int			height;
+	int			iter;
+	int			i;
+}
+
+/*
 -----------------Program data struct-----------------
 width, height	<-- of the picture in pixels
 */
@@ -97,6 +127,7 @@ void		ft_scroll(double xdelta, double ydelta, void *param);
 /*Functions for working with complex numbers*/
 void		ft_com_num_init(t_com_num *com_num, double real, double imag);
 t_com_num	ft_com_multiplication(t_com_num num1, t_com_num num2);
+t_com_num	ft_com_division(t_com_num den, t_com_num div);
 t_com_num	ft_com_pow(t_com_num num, int pow);
 t_com_num	ft_com_sum(t_com_num num1, t_com_num num2);
 double		ft_com_abs_value(t_com_num num);
@@ -112,5 +143,10 @@ void		ft_mandel_color_rand(t_man_dat *man_dat);
 /*Functions for Julia set; shares struct and functions with Mandelbrot set*/
 void		ft_jul_comp(t_man_dat *man_dat);
 void		ft_get_jul(t_man_dat *man_dat);
+
+/*Functions for Newton fractal*/
+void		*ft_new_dat_init(t_dt *dt);
+void		ft_new_comp(t_new_dat *new_dat);
+void		ft_new_iter(t_new_dat *new_dat);
 
 #endif

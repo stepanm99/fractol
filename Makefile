@@ -6,14 +6,15 @@
 #    By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 16:06:38 by smelicha          #+#    #+#              #
-#    Updated: 2023/09/12 16:47:08 by smelicha         ###   ########.fr        #
+#    Updated: 2023/09/12 20:25:23 by smelicha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 #Sources:
 SRC = fractol.c src/complex_nr_math.c src/mandelbrot_computation.c \
-	src/data_init.c src/controls.c src/julia_computation.c
+	src/data_init.c src/controls.c src/julia_computation.c \
+	src/complex_nr_maath_1.c src/newton_computation.c
 #Libraries:
 MLX = ./MLX42
 MLXLIB = ./MLX42/build/libmlx42.a -Iinclude -lglfw -L"./glfw"   #/Users/$(USER)/.brew/opt/glfw/lib/

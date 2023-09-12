@@ -6,13 +6,13 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 18:22:32 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/12 18:56:31 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/12 20:17:28 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/fractol.h"
 
-void	ft_new_iter(t_man_dat *man_dat)
+void	ft_new_iter(t_new_dat *new_dat)
 {
 	while (man_dat->i <= man_dat->iter)
 	{
@@ -33,7 +33,7 @@ void	ft_new_iter(t_man_dat *man_dat)
 	}
 }
 
-void	ft_new_comp(t_man_dat *man_dat)
+void	ft_new_comp(t_new_dat *new_dat)
 {
 	while (man_dat->y_c < man_dat->height)
 	{
