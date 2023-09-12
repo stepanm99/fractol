@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/10 18:21:06 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:28:37 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ typedef struct man_num
 	t_com_num	c;
 }	t_man_num;
 
+typedef struct man_col
+{
+	int	r_coef;
+	int	g_coef;
+	int	b_coef;
+}	t_man_col;
+
 /*
 -----------------Madelbrot set data struct-----------------
 used also for computing Julia set
@@ -53,6 +60,7 @@ typedef struct man_dat
 	mlx_t		*mlx;
 	mlx_image_t	*image;
 	t_man_num	man_num;
+	t_man_col	man_col;
 	double		div_x;
 	double		div_y;
 	double		jul_x;
@@ -98,6 +106,7 @@ void		ft_mandel_comp(t_man_dat *man_dat);
 void		ft_mandel_iteration(t_man_dat *man_dat);
 void		ft_mandel_inside_color(t_man_dat *man_dat);
 void		ft_mandel_outside_color(t_man_dat *man_dat);
+void		ft_mandel_color_rand(t_man_dat *man_dat);
 
 /*Functions for Julia set; shares struct and functions with Mandelbrot set*/
 void		ft_jul_comp(t_man_dat *man_dat);

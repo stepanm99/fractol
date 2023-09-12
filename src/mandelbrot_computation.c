@@ -6,11 +6,18 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:59:56 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/09 17:08:59 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:28:21 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/fractol.h"
+
+void	ft_mandel_color_rand(t_man_dat *man_dat)
+{
+	man_dat->man_col.r_coef = rand() % 10;
+	man_dat->man_col.g_coef = rand() % 10;
+	man_dat->man_col.b_coef = rand() % 10;
+}
 
 /*If flag for coloring points belonging to the Mandebrot set is on
 	this function computes the colors, otherwise it defaults black*/
@@ -26,9 +33,9 @@ void	ft_mandel_outside_color(t_man_dat *man_dat)
 
 	smooth_coef = (ft_com_abs_value(man_dat->man_num.z) - 2.0) * 7;
 	mlx_put_pixel(man_dat->image, man_dat->x_c, man_dat->y_c,
-		((int)((man_dat->i + smooth_coef) * 8) << 24
-			| (int)(man_dat->i + smooth_coef) * 5 << 16
-			| (int)(man_dat->i + smooth_coef) * 6 << 8 | 255));
+		((int)((man_dat->i + smooth_coef) * man_dat->man_col.r_coef) << 24
+			| (int)(man_dat->i + smooth_coef) * man_dat->man_col.g_coef << 16
+			| (int)(man_dat->i + smooth_coef) * man_dat->man_col.b_coef << 8 | 255));
 }
 
 /*Algorithm for iterative computation, and decision whether it belongs into

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:29:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/11 15:31:14 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:29:32 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,11 @@ void	ft_key_control(t_dt *dt)
 	if (mlx_is_key_down(mlx, MLX_KEY_J))
 	{
 		ft_get_jul(man_dat);
+		ft_put_fractal(dt);
+	}
+	if (mlx_is_key_down(mlx, MLX_KEY_C))
+	{
+		ft_mandel_color_rand(man_dat);
 		ft_put_fractal(dt);
 	}
 }

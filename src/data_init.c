@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:29:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/09 17:12:01 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:26:18 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ t_dt	*ft_dt_init(void)
 	dt->width = 640;
 	dt->height = 480;
 	return(dt);
+}
+/*Helper function 1 for main init function*/
+void	ft_man_dat_init_1(t_man_dat *man_dat)
+{
+	man_dat->man_col.r_coef = 8;
+	man_dat->man_col.g_coef = 5;
+	man_dat->man_col.b_coef = 6;
 }
 
 /*Initialization of mandelbrot data struct*/
@@ -51,5 +58,6 @@ void	*ft_man_dat_init(t_dt *dt)
 	man_dat->iter = 250;
 	man_dat->i = 0;
 	dt->man_dat = man_dat;
+	ft_man_dat_init_1(man_dat);
 	return (man_dat);
 }
