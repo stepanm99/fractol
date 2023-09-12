@@ -1,8 +1,9 @@
 1 implement argc argv functionality into main
 2 update controls so it works for both newton and mandelbrot and add key for switching fractals
 3 resolve memory cleaning after fractal switching
-4 finish newton fractal computation
-5 implement window resizing
+4 finish scroll whell zooming
+5 finish newton fractal computation
+6 implement window resizing
 
 
 
