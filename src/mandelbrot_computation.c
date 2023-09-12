@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:59:56 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/12 17:28:21 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/12 17:38:36 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 
 void	ft_mandel_color_rand(t_man_dat *man_dat)
 {
-	man_dat->man_col.r_coef = rand() % 10;
-	man_dat->man_col.g_coef = rand() % 10;
-	man_dat->man_col.b_coef = rand() % 10;
+	man_dat->man_col.r_coef += 3;
+	if (man_dat->man_col.r_coef > 8)
+		man_dat->man_col.r_coef -= 8;
+	man_dat->man_col.g_coef += 1;
+	if (man_dat->man_col.g_coef > 8)
+		man_dat->man_col.g_coef -= 8;
+	man_dat->man_col.b_coef += 2;
+	if (man_dat->man_col.b_coef > 8)
+		man_dat->man_col.b_coef -= 8;
 }
 
 /*If flag for coloring points belonging to the Mandebrot set is on
