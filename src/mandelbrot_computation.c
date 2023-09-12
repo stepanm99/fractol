@@ -6,12 +6,13 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:59:56 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/12 17:38:36 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/12 18:57:30 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/fractol.h"
 
+/*Changes coloring of the fractal*/
 void	ft_mandel_color_rand(t_man_dat *man_dat)
 {
 	man_dat->man_col.r_coef += 3;
@@ -63,7 +64,7 @@ void	ft_mandel_iteration(t_man_dat *man_dat)
 			ft_mandel_inside_color(man_dat);
 			break ;
 		}
-		z_pow = ft_com_multiplication(man_dat->man_num.z, man_dat->man_num.z);
+		z_pow = ft_com_pow(man_dat->man_num.z, 2);
 		man_dat->man_num.z = ft_com_sum(z_pow, man_dat->man_num.c);
 		man_dat->i++;
 	}

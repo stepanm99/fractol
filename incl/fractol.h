@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/12 17:28:37 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/12 18:52:33 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void		ft_scroll(double xdelta, double ydelta, void *param);
 /*Functions for working with complex numbers*/
 void		ft_com_num_init(t_com_num *com_num, double real, double imag);
 t_com_num	ft_com_multiplication(t_com_num num1, t_com_num num2);
+t_com_num	ft_com_pow(t_com_num num, int pow);
 t_com_num	ft_com_sum(t_com_num num1, t_com_num num2);
 double		ft_com_abs_value(t_com_num num);
 
