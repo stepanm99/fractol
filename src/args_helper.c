@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atof.c                                          :+:      :+:    :+:   */
+/*   args_helper.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 22:20:07 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/14 22:24:10 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/14 22:44:11 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ double	ft_atoi_after_point(const char *str, int *i)
 	return (n);
 }
 
+
 double	ft_atof(const char *str)
 {
 	int		i;
@@ -69,4 +70,25 @@ double	ft_atof(const char *str)
 	i++;
 	n += ft_atoi_after_point(str, &i);
 	return (n * negflag);
+}
+
+int	ft_match(const char *str1, const char *str2)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	while (str1[j] != '\0')
+		j++;
+	while (str2[k] != '\0')
+		k++;
+	while (str1[i] == str2[i])
+		i++;
+	if (j == k && j == i)
+		return (i);
+	else
+		return (0);
 }

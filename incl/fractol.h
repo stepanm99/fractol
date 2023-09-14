@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/14 22:15:26 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/14 22:45:41 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ t_dt		*ft_dt_init(void);
 void		ft_key_control(t_dt *dt);
 void		ft_scroll(double xdelta, double ydelta, void *param);
 double  	ft_atof(const char *str);
+int			ft_match(const char *str1, const char *str2);
 
 /*Functions for working with complex numbers*/
 void		ft_com_num_init(t_com_num *com_num, double real, double imag);
