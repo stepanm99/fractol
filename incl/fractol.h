@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/12 20:29:43 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/14 22:15:26 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,16 +104,21 @@ typedef struct new_dat
 	int			height;
 	int			iter;
 	int			i;
-}
+}	t_new_dat;
 
 /*
 -----------------Program data struct-----------------
 width, height	<-- of the picture in pixels
+fr_flag			<-- flag for fractal type
+					1 = Mandelbrot
+					2 = Julia
+					3 = Newton
 */
 typedef struct dt
 {
 	int			width;
 	int			height;
+	char		fr_flag;
 	mlx_t		*mlx;
 	mlx_image_t	*image;
 	t_man_dat	*man_dat;
@@ -123,6 +128,7 @@ typedef struct dt
 t_dt		*ft_dt_init(void);
 void		ft_key_control(t_dt *dt);
 void		ft_scroll(double xdelta, double ydelta, void *param);
+double  	ft_atof(const char *str);
 
 /*Functions for working with complex numbers*/
 void		ft_com_num_init(t_com_num *com_num, double real, double imag);

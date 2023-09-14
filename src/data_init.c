@@ -20,6 +20,7 @@ t_dt	*ft_dt_init(void)
 	dt = malloc(sizeof(t_dt));
 	if (!dt)
 		return (NULL);
+	dt->fr_flag = 0;
 	dt->width = 640;
 	dt->height = 480;
 	return(dt);

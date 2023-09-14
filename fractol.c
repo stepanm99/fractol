@@ -21,6 +21,18 @@ void	ft_hook(void *param)
 	ft_key_control(dt);
 }
 
+void ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
+{
+	int	i;
+
+	i = 0;
+	while (i <= (argc - 1))
+	{
+		printf("argv[%i]: %s\n", i, argv[i]);
+		i++;
+	}
+}
+
 int	main(int argc, const char *argv[])
 {
 	t_dt	*dt;
@@ -43,6 +55,8 @@ int	main(int argc, const char *argv[])
 		puts(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
+	if (argc > 1)
+		ft_arg_resolve(dt, argc, argv);
 	ft_man_dat_init(dt);
 	ft_mandel_comp(dt->man_dat);
 	mlx_loop_hook(dt->mlx, ft_hook, dt);
