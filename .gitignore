@@ -1,0 +1,4 @@
+*.o
+fractol
+*.a
+.DS_store

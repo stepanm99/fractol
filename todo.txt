@@ -1,8 +1,16 @@
-1 try to compile with minilibx.a library to see if it works
-2 figure out the makefile so it builds the library, implement clean and all this stuff...
-
+1 implement argc argv functionality into main
+2 update controls so it works for both newton and mandelbrot and add key for switching fractals
+3 resolve memory cleaning after fractal switching
+4 finish scroll whell zooming
+5 finish newton fractal computation
+6 implement window resizing
 
 
 
 useful stuff:
 removing files recursively by extension: https://unix.stackexchange.com/questions/116389/recursively-delete-all-files-with-a-given-extension
+
+https://stackoverflow.com/questions/7530627/hcl-color-to-rgb-and-backward
+https://mina86.com/2021/srgb-lab-lchab-conversions/
+http://www.brucelindbloom.com/index.html?Math.html
+https://en.wikipedia.org/wiki/Newton_fractal
