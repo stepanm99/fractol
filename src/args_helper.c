@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 22:20:07 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/14 22:44:11 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/15 15:50:38 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double	ft_atof_before_point(const char *str, int *i)
 	double	n;
 
 	n = 0.0;
-	while ((str[*i] >= '0' && str[*i] <= '9') && (str[*i] != '.' || str[*i]) != '\0')
+	while ((str[*i] >= '0' && str[*i] <= '9') && (str[*i] != '.' || str[*i] != '\0'))
 	{
 		n = n * 10 + (str[*i] - '0');
 		*i += 1;
@@ -46,6 +46,18 @@ double	ft_atoi_after_point(const char *str, int *i)
 	return (n);
 }
 
+int	ft_atof_str_check(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if ((str[i] < '0' && str[i] > '9') && (str[i] != '.'))
+			return (1);
+	}
+	return (0);
+}
 
 double	ft_atof(const char *str)
 {
@@ -53,6 +65,8 @@ double	ft_atof(const char *str)
 	int		negflag;
 	double	n;
 
+	if (ft_atof_str_check(str))
+		ft_error(0);
 	i = 0;
 	n = 0;
 	negflag = 1;
@@ -78,6 +92,8 @@ int	ft_match(const char *str1, const char *str2)
 	int	j;
 	int	k;
 
+	if (str1 == NULL || str2 == NULL)
+		return (0);
 	i = 0;
 	j = 0;
 	k = 0;
@@ -85,7 +101,7 @@ int	ft_match(const char *str1, const char *str2)
 		j++;
 	while (str2[k] != '\0')
 		k++;
-	while (str1[i] == str2[i])
+	while ((str1[i] == str2[i]) && (str1[i] != '\0' || str2[i] != '\0'))
 		i++;
 	if (j == k && j == i)
 		return (i);

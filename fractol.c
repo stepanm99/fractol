@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/10 18:09:30 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:00:51 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ void	ft_hook(void *param)
 
 void ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
 {
-	int	i;
-
-	i = 0;
-	while (i <= (argc - 1))
-	{
-		printf("argv[%i]: %s\n", i, argv[i]);
-		i++;
-	}
+	if (argc <= 1)
+		return ;
+	else if (ft_match(argv[1], "mandelbrot"))
+		dt->fr_flag = 1;
+	else if (ft_match(argv[1], "julia"))
+		dt->fr_flag = 2;
+	else if (ft_match(argv[1], "newton"))
+		dt->fr_flag = 3;
 }
 
 int	main(int argc, const char *argv[])
@@ -55,8 +55,8 @@ int	main(int argc, const char *argv[])
 		puts(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
-	if (argc > 1)
-		ft_arg_resolve(dt, argc, argv);
+	printf("ft_atof: %f\n", ft_atof("123.456"));
+	ft_arg_resolve(dt, argc, argv);
 	ft_man_dat_init(dt);
 	ft_mandel_comp(dt->man_dat);
 	mlx_loop_hook(dt->mlx, ft_hook, dt);

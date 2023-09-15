@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/14 22:45:41 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/15 15:59:48 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,14 +124,21 @@ typedef struct dt
 	t_man_dat	*man_dat;
 }	t_dt;
 
-/*Program functions*/
+/*-----Program functions-----*/
 t_dt		*ft_dt_init(void);
 void		ft_key_control(t_dt *dt);
 void		ft_scroll(double xdelta, double ydelta, void *param);
 double  	ft_atof(const char *str);
 int			ft_match(const char *str1, const char *str2);
 
-/*Functions for working with complex numbers*/
+/*-----Error & help functions-----*/
+/*ft_error: errno
+	0 -> number error (e.g.: in arg for Julia)*/
+void		ft_error(int errno);
+void		ft_print_nr_error(void);
+void		ft_print_help(void);
+
+/*-----Functions for working with complex numbers-----*/
 void		ft_com_num_init(t_com_num *com_num, double real, double imag);
 t_com_num	ft_com_multiplication(t_com_num num1, t_com_num num2);
 t_com_num	ft_com_division(t_com_num den, t_com_num div);
@@ -139,7 +146,7 @@ t_com_num	ft_com_pow(t_com_num num, int pow);
 t_com_num	ft_com_sum(t_com_num num1, t_com_num num2);
 double		ft_com_abs_value(t_com_num num);
 
-/*Functions for Mandelbrot set*/
+/*-----Functions for Mandelbrot set-----*/
 void		*ft_man_dat_init(t_dt *dt);
 void		ft_mandel_comp(t_man_dat *man_dat);
 void		ft_mandel_iteration(t_man_dat *man_dat);
@@ -147,11 +154,11 @@ void		ft_mandel_inside_color(t_man_dat *man_dat);
 void		ft_mandel_outside_color(t_man_dat *man_dat);
 void		ft_mandel_color_rand(t_man_dat *man_dat);
 
-/*Functions for Julia set; shares struct and functions with Mandelbrot set*/
+/*-----Functions for Julia set-----*/
 void		ft_jul_comp(t_man_dat *man_dat);
 void		ft_get_jul(t_man_dat *man_dat);
 
-/*Functions for Newton fractal*/
+/*-----Functions for Newton fractal-----*/
 void		*ft_new_dat_init(t_dt *dt);
 void		ft_new_comp(t_new_dat *new_dat);
 void		ft_new_iter(t_new_dat *new_dat);

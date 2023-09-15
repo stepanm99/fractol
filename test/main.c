@@ -81,23 +81,6 @@ int	ft_match(const char *str1, const char *str2)
 		return (0);
 }
 
-int	ft_char_comp(const char *test, const char *set)
-{
-	int	i;
-	int	j;
-	int	
-
-	i = 0;
-	j = 0;
-	while (test[i] != '\0')
-	{
-		while (set[j] != '\0')
-			if (set[j] == test[i])
-			if (set[j + 1] == '\0')
-				return (0);
-	}
-}
-
 int	ft_is_str_nr(const char *str)
 {
 	int	i;
