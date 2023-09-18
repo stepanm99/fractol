@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:29:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/18 19:32:50 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 20:21:11 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 void ft_put_fractal(t_dt *dt)
 {
-	t_man_dat	*man_dat;
-
-	man_dat = dt->man_dat;
 	if (dt->fr_flag == 1)
-		ft_mandel_comp(man_dat);
+		ft_mandel_comp(dt);
 	if (dt->fr_flag == 2)
-		ft_jul_comp(man_dat);
+		ft_jul_comp(dt);
 }
 
 void	ft_scroll(double xdelta, double ydelta, void *param)

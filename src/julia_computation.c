@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 17:12:24 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/12 18:48:10 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 20:29:41 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,27 @@ void	ft_get_jul(t_man_dat *man_dat)
 }
 
 /*Algorithm to compute Julia set; uses same functions as Mandelbrot set*/
-void	ft_jul_comp(t_man_dat *man_dat)
+void	ft_jul_comp(t_dt *dt)
 {
-	while (man_dat->y_c < man_dat->height)
+	while (dt->man_dat->y_c < dt->man_dat->height)
 	{
-		while (man_dat->x_c < man_dat->width)
+		while (dt->man_dat->x_c < dt->man_dat->width)
 		{
-			ft_com_num_init(&man_dat->man_num.c, man_dat->jul_x,
-				man_dat->jul_y);
-			ft_com_num_init(&man_dat->man_num.z,
-				(((((double)man_dat->x_c * man_dat->div_x) - 2.0)
-						/ man_dat->zoom) + man_dat->x),
-				(((((double)man_dat->y_c
-								* man_dat->div_y) - 1.12)
-						/ man_dat->zoom) + man_dat->y));
-			ft_mandel_iteration(man_dat);
-			man_dat->i = 0;
-			man_dat->x_c++;
+			ft_com_num_init(&dt->man_dat->man_num.c, dt->man_dat->jul_x,
+				dt->man_dat->jul_y);
+			ft_com_num_init(&dt->man_dat->man_num.z,
+				(((((double)dt->man_dat->x_c * dt->man_dat->div_x) - 2.0)
+						/ dt->man_dat->zoom) + dt->man_dat->x),
+				(((((double)dt->man_dat->y_c
+								* dt->man_dat->div_y) - 1.12)
+						/ dt->man_dat->zoom) + dt->man_dat->y));
+			ft_mandel_iteration(dt->man_dat);
+			dt->man_dat->i = 0;
+			dt->man_dat->x_c++;
 		}
-		man_dat->x_c = 0;
-		man_dat->y_c++;
+		dt->man_dat->x_c = 0;
+		dt->man_dat->y_c++;
 	}
-	man_dat->x_c = 0;
-	man_dat->y_c = 0;
+	dt->man_dat->x_c = 0;
+	dt->man_dat->y_c = 0;
 }

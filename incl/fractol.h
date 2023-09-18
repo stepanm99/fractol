@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/18 19:53:37 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 20:28:16 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ typedef struct dt
 {
 	int			width;
 	int			height;
+	double		jul_x;
+	double		jul_y;
 	char		fr_flag;
 	mlx_t		*mlx;
 	mlx_image_t	*image;
@@ -151,14 +153,14 @@ double		ft_com_abs_value(t_com_num num);
 
 /*-----Functions for Mandelbrot set-----*/
 void		ft_man_dat_init(t_dt *dt);
-void		ft_mandel_comp(t_man_dat *man_dat);
+void		ft_mandel_comp(t_dt *dt);
 void		ft_mandel_iteration(t_man_dat *man_dat);
 void		ft_mandel_inside_color(t_man_dat *man_dat);
 void		ft_mandel_outside_color(t_man_dat *man_dat);
 void		ft_mandel_color_rand(t_man_dat *man_dat);
 
 /*-----Functions for Julia set-----*/
-void		ft_jul_comp(t_man_dat *man_dat);
+void		ft_jul_comp(t_dt *dt);
 void		ft_get_jul(t_man_dat *man_dat);
 
 /*-----Functions for Newton fractal-----*/

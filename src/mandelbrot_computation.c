@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:59:56 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/12 18:57:30 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 20:22:42 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,26 +71,26 @@ void	ft_mandel_iteration(t_man_dat *man_dat)
 }
 
 /*Algorithm to compute all points of the image*/
-void	ft_mandel_comp(t_man_dat *man_dat)
+void	ft_mandel_comp(t_dt *dt)
 {
-	while (man_dat->y_c < man_dat->height)
+	while (dt->man_dat->y_c < dt->man_dat->height)
 	{
-		while (man_dat->x_c < man_dat->width)
+		while (dt->man_dat->x_c < dt->man_dat->width)
 		{
-			ft_com_num_init(&man_dat->man_num.z, 0.0, 0.0);
-			ft_com_num_init(&man_dat->man_num.c,
-				(((((double)man_dat->x_c * man_dat->div_x) - 2.0)
-						/ man_dat->zoom) + man_dat->x),
-				(((((double)man_dat->y_c
-								* man_dat->div_y) - 1.12)
-						/ man_dat->zoom) + man_dat->y));
-			ft_mandel_iteration(man_dat);
-			man_dat->i = 0;
-			man_dat->x_c++;
+			ft_com_num_init(&dt->man_dat->man_num.z, 0.0, 0.0);
+			ft_com_num_init(&dt->man_dat->man_num.c,
+				(((((double)dt->man_dat->x_c * dt->man_dat->div_x) - 2.0)
+						/ dt->man_dat->zoom) + dt->man_dat->x),
+				(((((double)dt->man_dat->y_c
+								* dt->man_dat->div_y) - 1.12)
+						/ dt->man_dat->zoom) + dt->man_dat->y));
+			ft_mandel_iteration(dt->man_dat);
+			dt->man_dat->i = 0;
+			dt->man_dat->x_c++;
 		}
-		man_dat->x_c = 0;
-		man_dat->y_c++;
+		dt->man_dat->x_c = 0;
+		dt->man_dat->y_c++;
 	}
-	man_dat->x_c = 0;
-	man_dat->y_c = 0;
+	dt->man_dat->x_c = 0;
+	dt->man_dat->y_c = 0;
 }

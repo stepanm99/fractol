@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:29:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/18 19:53:14 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:59:58 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_dt	*ft_dt_init(void)
 	dt->fr_flag = 0;
 	dt->width = 640;
 	dt->height = 480;
+	dt->jul_x = 0.0;
+	dt->jul_y = 0.0;
 	dt->man_dat = NULL;
 	dt->new_dat = NULL;
 	return(dt);

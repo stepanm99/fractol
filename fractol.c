@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/18 19:56:25 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 20:18:48 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
 	else if (ft_match(argv[1], "mandelbrot"))
 		dt->fr_flag = 1;
 	else if (ft_match(argv[1], "julia"))
+	{
 		dt->fr_flag = 2;
+//		dt->jul_x = ft_atof(argv[2]);
+//		dt->jul_y = ft_atof(argv[3]);
+	}
 	else if (ft_match(argv[1], "newton"))
 		dt->fr_flag = 3;
 }
