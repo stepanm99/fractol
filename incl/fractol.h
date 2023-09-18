@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/18 17:44:29 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:53:37 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ typedef struct dt
 	mlx_t		*mlx;
 	mlx_image_t	*image;
 	t_man_dat	*man_dat;
+	t_new_dat	*new_dat;
 }	t_dt;
 
 /*-----Program functions-----*/
@@ -130,6 +131,8 @@ void		ft_key_control(void *param);
 void		ft_scroll(double xdelta, double ydelta, void *param);
 double  	ft_atof(const char *str);
 int			ft_match(const char *str1, const char *str2);
+void		ft_fr_dat_init(t_dt *dt);
+void		ft_put_fractal(t_dt *dt);
 
 /*-----Error & help functions-----*/
 /*ft_error: errno
@@ -147,7 +150,7 @@ t_com_num	ft_com_sum(t_com_num num1, t_com_num num2);
 double		ft_com_abs_value(t_com_num num);
 
 /*-----Functions for Mandelbrot set-----*/
-void		*ft_man_dat_init(t_dt *dt);
+void		ft_man_dat_init(t_dt *dt);
 void		ft_mandel_comp(t_man_dat *man_dat);
 void		ft_mandel_iteration(t_man_dat *man_dat);
 void		ft_mandel_inside_color(t_man_dat *man_dat);

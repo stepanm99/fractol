@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:29:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/12 20:32:32 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:53:14 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,19 @@ t_dt	*ft_dt_init(void)
 	dt->fr_flag = 0;
 	dt->width = 640;
 	dt->height = 480;
+	dt->man_dat = NULL;
+	dt->new_dat = NULL;
 	return(dt);
 }
-/*Helper function 1 for main init function*/
-void	ft_man_dat_init_1(t_man_dat *man_dat)
+
+void	ft_fr_dat_init(t_dt *dt)
 {
-	man_dat->man_col.r_coef = 8;
-	man_dat->man_col.g_coef = 5;
-	man_dat->man_col.b_coef = 6;
+	if (dt->fr_flag == 1)
+		ft_man_dat_init(dt);
+	if (dt->fr_flag == 2)
+		ft_man_dat_init(dt);
+	if (dt->fr_flag == 3)
+		ft_new_dat_init(dt);
 }
 
 void	*ft_new_dat_init(t_dt *dt)
@@ -59,31 +64,30 @@ void	*ft_new_dat_init(t_dt *dt)
 }
 
 /*Initialization of mandelbrot data struct*/
-void	*ft_man_dat_init(t_dt *dt)
+void	ft_man_dat_init(t_dt *dt)
 {
-	t_man_dat	*man_dat;
-
-	man_dat = malloc(sizeof(t_man_dat));
-	if (!man_dat)
-		return (NULL);
-	man_dat->mlx = dt->mlx;
-	man_dat->image = dt->image;
-	man_dat->width = dt->width;
-	man_dat->height = dt->height;
-	ft_com_num_init(&man_dat->man_num.z, 0.0, 0.0);
-	ft_com_num_init(&man_dat->man_num.c, 0.0, 0.0);
-	man_dat->div_x = 2.47 / dt->width;
-	man_dat->div_y = 2.24 / dt->height;
-	man_dat->jul_x = 0.0;
-	man_dat->jul_y = 0.0;
-	man_dat->x = 0.0;
-	man_dat->y = 0.0;
-	man_dat->zoom = 1.0;
-	man_dat->x_c = 0;
-	man_dat->y_c = 0;
-	man_dat->iter = 250;
-	man_dat->i = 0;
-	dt->man_dat = man_dat;
-	ft_man_dat_init_1(man_dat);
-	return (man_dat);
+	dt->man_dat = malloc(sizeof(t_man_dat));
+	if (!dt->man_dat)
+		return ;
+	dt->man_dat->mlx = dt->mlx;
+	dt->man_dat->image = dt->image;
+	dt->man_dat->width = dt->width;
+	dt->man_dat->height = dt->height;
+	ft_com_num_init(&dt->man_dat->man_num.z, 0.0, 0.0);
+	ft_com_num_init(&dt->man_dat->man_num.c, 0.0, 0.0);
+	dt->man_dat->div_x = 2.47 / dt->width;
+	dt->man_dat->div_y = 2.24 / dt->height;
+	dt->man_dat->jul_x = 0.0;
+	dt->man_dat->jul_y = 0.0;
+	dt->man_dat->x = 0.0;
+	dt->man_dat->y = 0.0;
+	dt->man_dat->zoom = 1.0;
+	dt->man_dat->x_c = 0;
+	dt->man_dat->y_c = 0;
+	dt->man_dat->iter = 250;
+	dt->man_dat->i = 0;
+	dt->man_dat->man_col.r_coef = 8;
+	dt->man_dat->man_col.g_coef = 5;
+	dt->man_dat->man_col.b_coef = 6;
+	ft_put_fractal(dt);
 }

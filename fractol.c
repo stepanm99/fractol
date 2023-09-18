@@ -6,21 +6,12 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/18 17:42:48 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:56:25 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "./incl/fractol.h"
-
-/*
-void	ft_hook(void *param)
-{
-	t_dt	*dt;
-
-	dt = param;
-	ft_key_control(dt);
-}*/
 
 void ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
 {
@@ -32,6 +23,15 @@ void ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
 		dt->fr_flag = 2;
 	else if (ft_match(argv[1], "newton"))
 		dt->fr_flag = 3;
+}
+
+void	ft_data_free(t_dt *dt)
+{
+	if (dt->man_dat)
+		free(dt->man_dat);
+	if (dt->new_dat)
+		free(dt->new_dat);
+	free(dt);
 }
 
 int	main(int argc, const char *argv[])
@@ -57,13 +57,11 @@ int	main(int argc, const char *argv[])
 		return (EXIT_FAILURE);
 	}
 	ft_arg_resolve(dt, argc, argv);
-	ft_man_dat_init(dt);
-	ft_mandel_comp(dt->man_dat);
+	ft_fr_dat_init(dt);
 	mlx_loop_hook(dt->mlx, ft_key_control, dt);
 	mlx_scroll_hook(dt->mlx, ft_scroll, dt);
 	mlx_loop(dt->mlx);
 	mlx_terminate(dt->mlx);
-	free(dt->man_dat);
-	free(dt);
+	ft_data_free(dt);
 	return (EXIT_SUCCESS);
 }
