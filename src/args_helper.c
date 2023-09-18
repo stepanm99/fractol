@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 22:20:07 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/18 16:37:56 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 20:48:33 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,18 @@ double	ft_atoi_after_point(const char *str, int *i)
 int	ft_atof_str_check(const char *str)
 {
 	int	i;
+	int	flag;
 
 	i = 0;
+	flag = 0;
 	while (str[i] != '\0')
 	{
-		if ((str[i] < '0' && str[i] > '9') && (str[i] != '.'))
-			return (1);
+		if ((str[i] < '0' && str[i] > '9') || (str[i] != '.'))
+			flag = 1;
 		i++;
 	}
-	return (0);
+	printf("flag: %i", flag);
+	return (flag);
 }
 
 double	ft_atof(const char *str)
