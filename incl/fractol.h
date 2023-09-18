@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/15 15:59:48 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:44:29 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ typedef struct dt
 
 /*-----Program functions-----*/
 t_dt		*ft_dt_init(void);
-void		ft_key_control(t_dt *dt);
+void		ft_key_control(void *param);
 void		ft_scroll(double xdelta, double ydelta, void *param);
 double  	ft_atof(const char *str);
 int			ft_match(const char *str1, const char *str2);

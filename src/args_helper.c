@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 22:20:07 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/15 15:50:38 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:37:56 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	ft_atof_str_check(const char *str)
 	{
 		if ((str[i] < '0' && str[i] > '9') && (str[i] != '.'))
 			return (1);
+		i++;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:29:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/12 18:49:08 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 18:15:37 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,82 +50,116 @@ void	ft_scroll(double xdelta, double ydelta, void *param)
 	}
 	ft_put_fractal(dt);
 }
+void	ft_view_pan_up(t_dt *dt)
+{
+	printf("up\n");
+	dt->man_dat->y += 0.1 / dt->man_dat->zoom;
+	ft_put_fractal(dt);
+}
 
-void	ft_key_control(t_dt *dt)
+void	ft_view_pan_down(t_dt *dt)
+{
+	printf("down\n");
+	dt->man_dat->y -= 0.1 / dt->man_dat->zoom;
+	ft_put_fractal(dt);
+}
+
+void	ft_view_pan_left(t_dt *dt)
+{
+	printf("left\n");
+	dt->man_dat->x += 0.1 / dt->man_dat->zoom;
+	ft_put_fractal(dt);
+}
+
+void	ft_view_pan_right(t_dt *dt)
+{
+	printf("right\n");
+	dt->man_dat->x -= 0.1 / dt->man_dat->zoom;
+	ft_put_fractal(dt);
+}
+
+void	ft_view_zoom_down(t_dt *dt)
+{
+	printf("+\n");
+	dt->man_dat->zoom += dt->man_dat->zoom / 3;
+	ft_put_fractal(dt);
+}
+
+void	ft_view_zoom_up(t_dt *dt)
+{
+	printf("-\n");
+	dt->man_dat->zoom -= dt->man_dat->zoom / 3;
+	ft_put_fractal(dt);
+}
+
+void	ft_view_home(t_dt *dt)
+{
+	dt->man_dat->zoom = 1;
+	dt->man_dat->x = 0;
+	dt->man_dat->y = 0;
+	dt->man_dat->jul_x = 0.0;
+	dt->man_dat->jul_y = 0.0;
+	printf("home\n");
+	ft_put_fractal(dt);
+}
+
+void	ft_view_iter_more(t_dt *dt)
+{
+	dt->man_dat->iter += 50;
+	printf("iter: %i\n", dt->man_dat->iter);
+	ft_put_fractal(dt);
+}
+
+void	ft_view_iter_less(t_dt *dt)
+{
+	dt->man_dat->iter -= 50;
+	printf("iter: %i\n", dt->man_dat->iter);
+	ft_put_fractal(dt);
+}
+
+void	ft_view_jul_from_man(t_dt *dt)
+{
+	ft_get_jul(dt->man_dat);
+	ft_put_fractal(dt);
+}
+
+void	ft_view_change_color(t_dt *dt)
+{
+	ft_mandel_color_rand(dt->man_dat);
+	ft_put_fractal(dt);
+}
+
+void	ft_key_control(void *param)
 {
 	t_man_dat	*man_dat;
 	mlx_t		*mlx;
+	t_dt		*dt;
 
+	dt = param;
 	man_dat = dt->man_dat;
 	mlx = man_dat->mlx;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-	{
-		printf("up\n");
-		man_dat->y += 0.1 / man_dat->zoom;
-		ft_put_fractal(dt);
-	}
+		ft_view_pan_up(dt);
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-	{
-		printf("down\n");
-		man_dat->y -= 0.1 / man_dat->zoom;
-		ft_put_fractal(dt);
-	}
+		ft_view_pan_down(dt);
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-	{
-		printf("left\n");
-		man_dat->x += 0.1 / man_dat->zoom;
-		ft_put_fractal(dt);
-	}
+		ft_view_pan_left(dt);
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-	{
-		printf("right\n");
-		man_dat->x -= 0.1 / man_dat->zoom;
-		ft_put_fractal(dt);
-	}
+		ft_view_pan_right(dt);
 	if (mlx_is_key_down(mlx, MLX_KEY_PAGE_DOWN))
-	{
-		printf("+\n");
-		man_dat->zoom += man_dat->zoom / 3;
-		ft_put_fractal(dt);
-	}
+		ft_view_zoom_down(dt);
 	if (mlx_is_key_down(mlx, MLX_KEY_PAGE_UP))
-	{
-		printf("-\n");
-		man_dat->zoom -= man_dat->zoom / 3;
-		ft_put_fractal(dt);
-	}
+		ft_view_zoom_up(dt);
 	if (mlx_is_key_down(mlx, MLX_KEY_I))
-	{
-		man_dat->iter += 50;
-		printf("iter: %i\n", man_dat->iter);
-		ft_put_fractal(dt);
-	}
+		ft_view_iter_more(dt);
 	if (mlx_is_key_down(mlx, MLX_KEY_K))
-	{
-		man_dat->iter -= 50;
-		printf("iter: %i\n", man_dat->iter);
-		ft_put_fractal(dt);
-	}
+		ft_view_iter_less(dt);
 	if (mlx_is_key_down(mlx, MLX_KEY_HOME))
-	{
-		man_dat->zoom = 1;
-		man_dat->x = 0;
-		man_dat->y = 0;
-		man_dat->jul_x = 0.0;
-		man_dat->jul_y = 0.0;
-		printf("home\n");
-		ft_put_fractal(dt);
-	}
+		ft_view_home(dt);
 	if (mlx_is_key_down(mlx, MLX_KEY_J))
-	{
-		ft_get_jul(man_dat);
-		ft_put_fractal(dt);
-	}
+		ft_view_jul_from_man(dt);
 	if (mlx_is_key_down(mlx, MLX_KEY_C))
-	{
-		ft_mandel_color_rand(man_dat);
-		ft_put_fractal(dt);
-	}
+		ft_view_change_color(dt);
 }

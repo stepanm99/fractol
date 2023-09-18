@@ -6,25 +6,26 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/15 16:00:51 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:42:48 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "./incl/fractol.h"
 
+/*
 void	ft_hook(void *param)
 {
 	t_dt	*dt;
 
 	dt = param;
 	ft_key_control(dt);
-}
+}*/
 
 void ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
 {
 	if (argc <= 1)
-		return ;
+		dt->fr_flag = 1 ;
 	else if (ft_match(argv[1], "mandelbrot"))
 		dt->fr_flag = 1;
 	else if (ft_match(argv[1], "julia"))
@@ -55,11 +56,10 @@ int	main(int argc, const char *argv[])
 		puts(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
-	printf("ft_atof: %f\n", ft_atof("123.456"));
 	ft_arg_resolve(dt, argc, argv);
 	ft_man_dat_init(dt);
 	ft_mandel_comp(dt->man_dat);
-	mlx_loop_hook(dt->mlx, ft_hook, dt);
+	mlx_loop_hook(dt->mlx, ft_key_control, dt);
 	mlx_scroll_hook(dt->mlx, ft_scroll, dt);
 	mlx_loop(dt->mlx);
 	mlx_terminate(dt->mlx);
