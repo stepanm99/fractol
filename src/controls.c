@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:29:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/18 20:21:11 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:48:20 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,37 +125,38 @@ void	ft_view_change_color(t_dt *dt)
 	ft_put_fractal(dt);
 }
 
+void	ft_key_control_1(t_dt *dt)
+{
+	if (mlx_is_key_down(dt->mlx, MLX_KEY_J))
+		ft_view_jul_from_man(dt);
+	if (mlx_is_key_down(dt->mlx, MLX_KEY_C))
+		ft_view_change_color(dt);
+}
+
 void	ft_key_control(void *param)
 {
-	t_man_dat	*man_dat;
-	mlx_t		*mlx;
 	t_dt		*dt;
 
 	dt = param;
-	man_dat = dt->man_dat;
-	mlx = man_dat->mlx;
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx);
-	if (mlx_is_key_down(mlx, MLX_KEY_UP))
+	if (mlx_is_key_down(dt->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(dt->mlx);
+	if (mlx_is_key_down(dt->mlx, MLX_KEY_UP))
 		ft_view_pan_up(dt);
-	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
+	if (mlx_is_key_down(dt->mlx, MLX_KEY_DOWN))
 		ft_view_pan_down(dt);
-	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+	if (mlx_is_key_down(dt->mlx, MLX_KEY_LEFT))
 		ft_view_pan_left(dt);
-	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+	if (mlx_is_key_down(dt->mlx, MLX_KEY_RIGHT))
 		ft_view_pan_right(dt);
-	if (mlx_is_key_down(mlx, MLX_KEY_PAGE_DOWN))
+	if (mlx_is_key_down(dt->mlx, MLX_KEY_PAGE_DOWN))
 		ft_view_zoom_down(dt);
-	if (mlx_is_key_down(mlx, MLX_KEY_PAGE_UP))
+	if (mlx_is_key_down(dt->mlx, MLX_KEY_PAGE_UP))
 		ft_view_zoom_up(dt);
-	if (mlx_is_key_down(mlx, MLX_KEY_I))
+	if (mlx_is_key_down(dt->mlx, MLX_KEY_I))
 		ft_view_iter_more(dt);
-	if (mlx_is_key_down(mlx, MLX_KEY_K))
+	if (mlx_is_key_down(dt->mlx, MLX_KEY_K))
 		ft_view_iter_less(dt);
-	if (mlx_is_key_down(mlx, MLX_KEY_HOME))
+	if (mlx_is_key_down(dt->mlx, MLX_KEY_HOME))
 		ft_view_home(dt);
-	if (mlx_is_key_down(mlx, MLX_KEY_J))
-		ft_view_jul_from_man(dt);
-	if (mlx_is_key_down(mlx, MLX_KEY_C))
-		ft_view_change_color(dt);
+	ft_key_control_1(dt);
 }
