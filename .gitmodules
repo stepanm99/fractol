@@ -4,3 +4,6 @@
 [submodule "glfw"]
 	path = glfw
 	url = https://github.com/glfw/glfw.git
+[submodule "ft_printf"]
+	path = ft_printf
+	url = https://github.com/stepanm99/ft_printf.git
