@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:29:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/20 15:22:52 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:57:42 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ void	ft_view_pan_up(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
 	{
-		printf("up\n");
+		ft_printf("up\n");
 		dt->man_dat->y += 0.1 / dt->man_dat->zoom;
 	}
 	if (dt->fr_flag == 3)
-		printf("Newton key control prototype\n");
+		ft_printf("Newton key control prototype\n");
 	ft_put_fractal(dt);
 }
 
@@ -60,11 +60,11 @@ void	ft_view_pan_down(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
 	{
-		printf("down\n");
+		ft_printf("down\n");
 		dt->man_dat->y -= 0.1 / dt->man_dat->zoom;
 	}
 	if (dt->fr_flag == 3)
-		printf("Newton key control prototype\n");
+		ft_printf("Newton key control prototype\n");
 	ft_put_fractal(dt);
 }
 
@@ -72,11 +72,11 @@ void	ft_view_pan_left(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
 	{
-		printf("left\n");
+		ft_printf("left\n");
 		dt->man_dat->x += 0.1 / dt->man_dat->zoom;
 	}
 	if (dt->fr_flag == 3)
-		printf("Newton key control prototype\n");
+		ft_printf("Newton key control prototype\n");
 	ft_put_fractal(dt);
 }
 
@@ -84,11 +84,11 @@ void	ft_view_pan_right(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
 	{
-		printf("right\n");
+		ft_printf("right\n");
 		dt->man_dat->x -= 0.1 / dt->man_dat->zoom;
 	}
 	if (dt->fr_flag == 3)
-		printf("Newton key control prototype\n");
+		ft_printf("Newton key control prototype\n");
 	ft_put_fractal(dt);
 }
 
@@ -96,11 +96,11 @@ void	ft_view_zoom_down(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
 	{
-		printf("+\n");
+		ft_printf("+\n");
 		dt->man_dat->zoom += dt->man_dat->zoom / 3;
 	}
 	if (dt->fr_flag == 3)
-		printf("Newton key control prototype\n");
+		ft_printf("Newton key control prototype\n");
 	ft_put_fractal(dt);
 }
 
@@ -108,11 +108,11 @@ void	ft_view_zoom_up(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
 	{
-		printf("-\n");
+		ft_printf("-\n");
 		dt->man_dat->zoom -= dt->man_dat->zoom / 3;
 	}
 	if (dt->fr_flag == 3)
-		printf("Newton key control prototype\n");
+		ft_printf("Newton key control prototype\n");
 	ft_put_fractal(dt);
 }
 
@@ -126,10 +126,10 @@ void	ft_view_home(t_dt *dt)
 		dt->man_dat->y = 0;
 		dt->man_dat->jul_x = 0.0;
 		dt->man_dat->jul_y = 0.0;
-		printf("home\n");
+		ft_printf("home\n");
 	}
 	if (dt->fr_flag == 3)
-		printf("Newton key control prototype\n");
+		ft_printf("Newton key control prototype\n");
 	ft_put_fractal(dt);
 }
 
@@ -138,10 +138,10 @@ void	ft_view_iter_more(t_dt *dt)
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
 	{
 		dt->man_dat->iter += 50;
-		printf("iter: %i\n", dt->man_dat->iter);
+		ft_printf("iter: %i\n", dt->man_dat->iter);
 	}
 	if (dt->fr_flag == 3)
-		printf("Newton key control prototype\n");
+		ft_printf("Newton key control prototype\n");
 	ft_put_fractal(dt);
 }
 
@@ -150,10 +150,10 @@ void	ft_view_iter_less(t_dt *dt)
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
 	{
 		dt->man_dat->iter -= 50;
-		printf("iter: %i\n", dt->man_dat->iter);
+		ft_printf("iter: %i\n", dt->man_dat->iter);
 	}
 	if (dt->fr_flag == 3)
-		printf("Newton key control prototype\n");
+		ft_printf("Newton key control prototype\n");
 	ft_put_fractal(dt);
 }
 
@@ -165,7 +165,7 @@ void	ft_view_jul_from_man(t_dt *dt)
 		ft_get_jul(dt->man_dat);
 	}
 	if (dt->fr_flag == 3)
-		printf("Newton key control prototype\n");
+		ft_printf("Newton key control prototype\n");
 	ft_put_fractal(dt);
 }
 
@@ -174,7 +174,7 @@ void	ft_view_change_color(t_dt *dt)
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
 		ft_mandel_color_rand(dt->man_dat);
 	if (dt->fr_flag == 3)
-		printf("Newton key control prototype\n");
+		ft_printf("Newton key control prototype\n");
 	ft_put_fractal(dt);
 }
 

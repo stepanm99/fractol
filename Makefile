@@ -6,7 +6,7 @@
 #    By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 16:06:38 by smelicha          #+#    #+#              #
-#    Updated: 2023/09/15 16:02:46 by smelicha         ###   ########.fr        #
+#    Updated: 2023/09/20 15:55:35 by smelicha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = fractol.c src/complex_nr_math.c src/mandelbrot_computation.c \
 MLX = ./MLX42
 MLXLIB = ./MLX42/build/libmlx42.a -Iinclude -lglfw -L"./glfw"   #/Users/$(USER)/.brew/opt/glfw/lib/
 LIBMLX = ./MLX42/build/libmlx42.a
+PRINTFLIB = ./ft_printf/libftprintf.a
 MATHLIB = -lm
 #Compiler stuff:
 CC = gcc
@@ -27,20 +28,28 @@ FLAGS = -Wall -Wextra -Werror -O3
 
 OBJ	= $(SRC:.c=.o)
 
-all: libmlx glfw $(NAME)
+all: printf libmlx glfw $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "Linking $@"
-	@$(CC) $(OBJ) $(LIBMLX) $(MLXLIB) $(MATHLIB) $(FLAGS) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBMLX) $(MLXLIB) $(PRINTFLIB) $(MATHLIB) $(FLAGS) -o $(NAME)
 	@echo "Done!"
 
+printf:
+	@echo "Building ft_printf"
+	@git submodule init ft_printf
+	@git submodule update ft_printf
+	@make all -C ./ft_printf
+
 libmlx:
+	@echo "Building MLX42"
 	@git submodule init MLX42
 	@git submodule update MLX42
 	@cmake ./MLX42 -B ./MLX42/build
 	@cmake --build ./MLX42/build
 
 glfw:
+	@echo "Building glfw"
 	@git submodule init glfw
 	@git submodule update glfw
 	@cmake ./glfw -B ./glfw/build
@@ -52,6 +61,7 @@ glfw:
 
 clean:
 	@rm -f $(OBJ) $(OBJB)
+
 
 fclean: clean
 	@rm -f $(NAME)

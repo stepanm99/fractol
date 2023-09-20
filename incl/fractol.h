@@ -6,18 +6,18 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/18 20:28:16 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:58:08 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <math.h>
 # include "../MLX42/include/MLX42/MLX42.h"
+# include "../ft_printf/incl/ft_printf.h"
 
 /*Struct for storing complex number*/
 typedef struct com_num
