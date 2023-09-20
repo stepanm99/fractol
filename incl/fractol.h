@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/20 15:58:08 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:23:02 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ i				<-- current iteration
 */
 typedef struct new_dat
 {
-	mlx_t		*mlx;
-	mlx_image_t	*image;
 	t_com_num	z;
 	t_com_num	func_res;
 	t_com_num	deri_res;

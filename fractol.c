@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/20 15:55:47 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:07:51 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,19 @@ int	main(int argc, const char *argv[])
 	dt = ft_dt_init();
 	if (!(dt->mlx = mlx_init(dt->width, dt->height, "FRACTOL", false)))
 	{
-		puts(mlx_strerror(mlx_errno));
+		ft_printf(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
 	if (!(dt->image = mlx_new_image(dt->mlx, dt->width, dt->height)))
 	{
 		mlx_close_window(dt->mlx);
-		puts(mlx_strerror(mlx_errno));
+		ft_printf(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
 	if (mlx_image_to_window(dt->mlx, dt->image, 0, 0) == -1)
 	{
 		mlx_close_window(dt->mlx);
-		puts(mlx_strerror(mlx_errno));
+		ft_printf(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
 	ft_arg_resolve(dt, argc, argv);

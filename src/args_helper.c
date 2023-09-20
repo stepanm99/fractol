@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 22:20:07 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/18 20:48:33 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:06:01 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_atof_str_check(const char *str)
 			flag = 1;
 		i++;
 	}
-	printf("flag: %i", flag);
+	ft_printf("flag: %i", flag);
 	return (flag);
 }
 
