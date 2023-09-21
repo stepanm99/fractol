@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/21 22:27:31 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/21 22:53:14 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
 		dt->jul_y = ft_atof(argv[3], dt);
 	}
 	else if (ft_match(argv[1], "newton"))
+	{
+		ft_printf("newton detected \n");
 		dt->fr_flag = 3;
+	}
 }
 
 /*Frees all allocated memory*/
@@ -45,7 +48,6 @@ int	main(int argc, const char *argv[])
 	t_dt	*dt;
 
 	dt = ft_dt_init();
-	ft_printf("floating point: %f\n", 3.141);
 	if (!(dt->mlx = mlx_init(dt->width, dt->height, "FRACTOL", false)))
 	{
 		ft_printf(mlx_strerror(mlx_errno));
@@ -65,6 +67,7 @@ int	main(int argc, const char *argv[])
 	}
 	ft_arg_resolve(dt, argc, argv);
 	ft_fr_dat_init(dt);
+	ft_put_fractal(dt);
 	mlx_loop_hook(dt->mlx, ft_key_control, dt);
 	mlx_scroll_hook(dt->mlx, ft_scroll, dt);
 	mlx_loop(dt->mlx);

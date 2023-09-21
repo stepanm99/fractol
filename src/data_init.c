@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:29:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/21 19:23:46 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/21 22:52:19 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,28 +42,27 @@ void	ft_fr_dat_init(t_dt *dt)
 }
 
 /*Initializes struct for computing newton fractal*/
-void	*ft_new_dat_init(t_dt *dt)
+void	ft_new_dat_init(t_dt *dt)
 {
-	t_new_dat	*new_dat;
-
-	new_dat = malloc(sizeof(t_new_dat));
-	if (!new_dat)
-		return (NULL);
-	new_dat->width = dt->width;
-	new_dat->height = dt->height;
-	ft_com_num_init(&new_dat->z, 0.0, 0.0);
-	ft_com_num_init(&new_dat->func_res, 0.0, 0.0);
-	ft_com_num_init(&new_dat->deri_res, 0.0, 0.0);
-	ft_com_num_init(&new_dat->three, 3.0, 0.0);
-	new_dat->tolerance = 0.000001;
-	new_dat->iter = 50;
-	new_dat->i = 0;
-	new_dat->x_div = 2.47 / dt->width;
-	new_dat->y_div = 2.24 / dt->height;
-	new_dat->x = 0.0;
-	new_dat->y = 0.0;
-	new_dat->zoom = 1.0;
-	return (new_dat);
+	dt->new_dat = malloc(sizeof(t_new_dat));
+	if (!dt->new_dat)
+		return ;
+	dt->new_dat->width = dt->width;
+	dt->new_dat->height = dt->height;
+	ft_com_num_init(&dt->new_dat->z, 0.0, 0.0);
+	ft_com_num_init(&dt->new_dat->func_res, 0.0, 0.0);
+	ft_com_num_init(&dt->new_dat->deri_res, 0.0, 0.0);
+	ft_com_num_init(&dt->new_dat->three, 3.0, 0.0);
+	dt->new_dat->tolerance = 0.000001;
+	dt->new_dat->iter = 50;
+	dt->new_dat->i = 0;
+	dt->new_dat->div_x = 3.5 / dt->width;
+	dt->new_dat->div_y = 3.0 / dt->height;
+	dt->new_dat->x_c = 0;
+	dt->new_dat->y_c = 0;
+	dt->new_dat->x = 0.0;
+	dt->new_dat->y = 0.0;
+	dt->new_dat->zoom = 1.0;
 }
 
 /*Checks if the desired fractal is Julia, if user gives coordinates when
