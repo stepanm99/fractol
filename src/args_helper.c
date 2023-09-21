@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 22:20:07 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/20 19:06:01 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:54:46 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,31 +46,39 @@ double	ft_atoi_after_point(const char *str, int *i)
 	return (n);
 }
 
+/*Checks if the string is valid, if it contains only numbers and one period*/
 int	ft_atof_str_check(const char *str)
 {
 	int	i;
 	int	flag;
+	int	p_flag;
 
 	i = 0;
 	flag = 0;
+	p_flag = 0;
 	while (str[i] != '\0')
 	{
 		if ((str[i] < '0' && str[i] > '9') || (str[i] != '.'))
 			flag = 1;
 		i++;
+		if (str[i] == '.')
+			p_flag++;
 	}
+	if (p_flag != 1)
+		return (0);
 	ft_printf("flag: %i", flag);
 	return (flag);
 }
 
-double	ft_atof(const char *str)
+/*Converts array to floating point number of double type*/
+double	ft_atof(const char *str, t_dt *dt)
 {
 	int		i;
 	int		negflag;
 	double	n;
 
 	if (ft_atof_str_check(str))
-		ft_error(0);
+		ft_error(0, dt);
 	i = 0;
 	n = 0;
 	negflag = 1;
@@ -90,6 +98,8 @@ double	ft_atof(const char *str)
 	return (n * negflag);
 }
 
+/*Compares two strings, if they are same, returns length of those strings,
+if strings are different returns 0*/
 int	ft_match(const char *str1, const char *str2)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:29:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/18 20:42:59 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:56:48 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_dt	*ft_dt_init(void)
 	return(dt);
 }
 
+/*Decides which struct gets initialized based on the desired fractal*/
 void	ft_fr_dat_init(t_dt *dt)
 {
 	if (dt->fr_flag == 1)
@@ -40,6 +41,7 @@ void	ft_fr_dat_init(t_dt *dt)
 		ft_new_dat_init(dt);
 }
 
+/*Initializes struct for computing newton fractal*/
 void	*ft_new_dat_init(t_dt *dt)
 {
 	t_new_dat	*new_dat;
@@ -47,8 +49,6 @@ void	*ft_new_dat_init(t_dt *dt)
 	new_dat = malloc(sizeof(t_new_dat));
 	if (!new_dat)
 		return (NULL);
-	new_dat->mlx = dt->mlx;
-	new_dat->image = dt->image;
 	new_dat->width = dt->width;
 	new_dat->height = dt->height;
 	ft_com_num_init(&new_dat->z, 0.0, 0.0);
@@ -65,6 +65,8 @@ void	*ft_new_dat_init(t_dt *dt)
 	return (new_dat);
 }
 
+/*Checks if the desired fractal is Julia, if user gives coordinates when
+starting the program it saves them to the struct*/
 void	ft_jul_init_check(t_dt *dt)
 {
 	if (dt->fr_flag == 2)

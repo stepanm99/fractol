@@ -6,20 +6,25 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:29:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/20 15:57:42 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:40:56 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/fractol.h"
 
+
+/*Decides which fractal to compute according to the user input*/
 void ft_put_fractal(t_dt *dt)
 {
 	if (dt->fr_flag == 1)
 		ft_mandel_comp(dt);
 	if (dt->fr_flag == 2)
 		ft_jul_comp(dt);
+	if (dt->fr_flag == 3)
+		ft_new_comp(dt);
 }
 
+/*Still not very functional scroll whell zooming function for mandelbrot*/
 void	ft_scroll(double xdelta, double ydelta, void *param)
 {
 	t_dt		*dt;
@@ -44,6 +49,8 @@ void	ft_scroll(double xdelta, double ydelta, void *param)
 	}
 	ft_put_fractal(dt);
 }
+
+/*Moves the view of the fractal up*/
 void	ft_view_pan_up(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
@@ -56,6 +63,7 @@ void	ft_view_pan_up(t_dt *dt)
 	ft_put_fractal(dt);
 }
 
+/*Moves the view of the fractal down*/
 void	ft_view_pan_down(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
@@ -68,6 +76,7 @@ void	ft_view_pan_down(t_dt *dt)
 	ft_put_fractal(dt);
 }
 
+/*Moves the view of the fractal left*/
 void	ft_view_pan_left(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
@@ -80,6 +89,7 @@ void	ft_view_pan_left(t_dt *dt)
 	ft_put_fractal(dt);
 }
 
+/*Moves the view of the fractal right*/
 void	ft_view_pan_right(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
@@ -92,6 +102,7 @@ void	ft_view_pan_right(t_dt *dt)
 	ft_put_fractal(dt);
 }
 
+/*Zooms the fractal*/
 void	ft_view_zoom_down(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
@@ -104,6 +115,7 @@ void	ft_view_zoom_down(t_dt *dt)
 	ft_put_fractal(dt);
 }
 
+/*Unzooms the fractal*/
 void	ft_view_zoom_up(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
@@ -116,6 +128,7 @@ void	ft_view_zoom_up(t_dt *dt)
 	ft_put_fractal(dt);
 }
 
+/*Sets the view back to default*/
 void	ft_view_home(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
@@ -133,6 +146,7 @@ void	ft_view_home(t_dt *dt)
 	ft_put_fractal(dt);
 }
 
+/*Adds more iterations for computing the fractal*/
 void	ft_view_iter_more(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
@@ -145,6 +159,7 @@ void	ft_view_iter_more(t_dt *dt)
 	ft_put_fractal(dt);
 }
 
+/*Decreases number of iterations for computing the fractal*/
 void	ft_view_iter_less(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
@@ -157,6 +172,8 @@ void	ft_view_iter_less(t_dt *dt)
 	ft_put_fractal(dt);
 }
 
+/*Switches to Julia fractal based on cursor coordinates
+on the Mandelbrot fractal*/
 void	ft_view_jul_from_man(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
@@ -169,6 +186,7 @@ void	ft_view_jul_from_man(t_dt *dt)
 	ft_put_fractal(dt);
 }
 
+/*Changes the constants for color computation*/
 void	ft_view_change_color(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
@@ -186,6 +204,7 @@ void	ft_key_control_1(t_dt *dt)
 		ft_view_change_color(dt);
 }
 
+/*Decides what to do when certain key is pressed*/
 void	ft_key_control(void *param)
 {
 	t_dt		*dt;

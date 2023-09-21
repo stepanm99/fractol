@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/20 20:23:02 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:57:11 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,9 +127,10 @@ typedef struct dt
 
 /*-----Program functions-----*/
 t_dt		*ft_dt_init(void);
+void		ft_data_free(t_dt *dt);
 void		ft_key_control(void *param);
 void		ft_scroll(double xdelta, double ydelta, void *param);
-double  	ft_atof(const char *str);
+double		ft_atof(const char *str, t_dt *dt);
 int			ft_match(const char *str1, const char *str2);
 void		ft_fr_dat_init(t_dt *dt);
 void		ft_put_fractal(t_dt *dt);
@@ -137,7 +138,7 @@ void		ft_put_fractal(t_dt *dt);
 /*-----Error & help functions-----*/
 /*ft_error: errno
 	0 -> number error (e.g.: in arg for Julia)*/
-void		ft_error(int errno);
+void		ft_error(int errno, t_dt *dt);
 void		ft_print_nr_error(void);
 void		ft_print_help(void);
 

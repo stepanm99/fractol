@@ -6,7 +6,7 @@
 #    By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 16:06:38 by smelicha          #+#    #+#              #
-#    Updated: 2023/09/20 15:55:35 by smelicha         ###   ########.fr        #
+#    Updated: 2023/09/21 18:07:14 by smelicha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,10 +61,12 @@ glfw:
 
 clean:
 	@rm -f $(OBJ) $(OBJB)
+	@make clean -C ./ft_printf
 
 
 fclean: clean
 	@rm -f $(NAME)
+	@make fclean -C ./ft_printf
 
 re: fclean all
 
