@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:29:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/21 18:56:48 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/21 19:23:46 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	*ft_new_dat_init(t_dt *dt)
 	ft_com_num_init(&new_dat->z, 0.0, 0.0);
 	ft_com_num_init(&new_dat->func_res, 0.0, 0.0);
 	ft_com_num_init(&new_dat->deri_res, 0.0, 0.0);
+	ft_com_num_init(&new_dat->three, 3.0, 0.0);
 	new_dat->tolerance = 0.000001;
 	new_dat->iter = 50;
 	new_dat->i = 0;

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/21 18:57:11 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/21 22:27:02 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct new_dat
 	t_com_num	z;
 	t_com_num	func_res;
 	t_com_num	deri_res;
+	t_com_num	three;
 	t_com_num	roots[3];
 	double		x_div;
 	double		y_div;
@@ -164,7 +165,7 @@ void		ft_get_jul(t_man_dat *man_dat);
 
 /*-----Functions for Newton fractal-----*/
 void		*ft_new_dat_init(t_dt *dt);
-void		ft_new_comp(t_new_dat *new_dat);
+void		ft_new_comp(t_dt *dt);
 void		ft_new_iter(t_new_dat *new_dat);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/21 18:55:06 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/21 22:27:31 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int argc, const char *argv[])
 	t_dt	*dt;
 
 	dt = ft_dt_init();
+	ft_printf("floating point: %f\n", 3.141);
 	if (!(dt->mlx = mlx_init(dt->width, dt->height, "FRACTOL", false)))
 	{
 		ft_printf(mlx_strerror(mlx_errno));
