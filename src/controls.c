@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:29:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/21 18:40:56 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:58:43 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /*Decides which fractal to compute according to the user input*/
 void ft_put_fractal(t_dt *dt)
 {
+	ft_printf("from put fractal\n");
 	if (dt->fr_flag == 1)
 		ft_mandel_comp(dt);
 	if (dt->fr_flag == 2)

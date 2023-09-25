@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/21 22:53:14 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:02:26 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ int	main(int argc, const char *argv[])
 	}
 	ft_arg_resolve(dt, argc, argv);
 	ft_fr_dat_init(dt);
+	ft_printf("after fractal data init\n");
 	ft_put_fractal(dt);
+	ft_printf("after put fractal\n");
 	mlx_loop_hook(dt->mlx, ft_key_control, dt);
 	mlx_scroll_hook(dt->mlx, ft_scroll, dt);
 	mlx_loop(dt->mlx);

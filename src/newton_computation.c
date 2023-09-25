@@ -6,11 +6,32 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 18:22:32 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/21 22:54:24 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:38:55 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/fractol.h"
+#include<stdio.h>
+
+void	ft_new_color(t_new_dat	*new_dat)
+{
+//	ft_printf("from new color\n");
+	if (new_dat->c_i == 0)
+	{
+		mlx_put_pixel(new_dat->image, new_dat->x_c, new_dat->y_c, 0xff0000ff);
+//		printf("red\n");
+	}
+	if (new_dat->c_i == 1)
+	{
+		mlx_put_pixel(new_dat->image, new_dat->x_c, new_dat->y_c, 0x00ff00ff);
+//		printf("green\n");
+	}
+	if (new_dat->c_i == 2)
+	{
+		mlx_put_pixel(new_dat->image, new_dat->x_c, new_dat->y_c, 0x0000ffff);
+//		printf("blue\n");
+	}
+}
 
 void	ft_new_function(t_new_dat *new_dat)
 {
@@ -27,7 +48,29 @@ void	ft_new_derivation(t_new_dat *new_dat)
 
 void	ft_new_iter(t_new_dat *new_dat)
 {
-	
+//	ft_printf("from ft_new_iter\n");
+	double	diff;
+
+	diff = 0.0;
+	while (new_dat->i <= new_dat->iter)
+	{
+		ft_new_function(new_dat);
+		ft_new_derivation(new_dat);
+		new_dat->z = ft_com_subtraction(new_dat->z,
+			ft_com_division(new_dat->func_res, new_dat->deri_res));
+		while (new_dat->c_i <= 2)
+		{
+			diff = ft_com_abs_value(ft_com_subtraction(new_dat->z,
+				new_dat->roots[new_dat->c_i]));
+//			printf("diff: %f\n", diff);
+//			ft_printf("c_i: %i\n", new_dat->c_i);
+			if (diff <= new_dat->tolerance)
+				ft_new_color(new_dat);
+			new_dat->c_i++;
+		}
+		new_dat->c_i = 0;
+		new_dat->i++;
+	}
 }
 
 void	ft_new_comp(t_dt *dt)

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/21 22:49:23 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:52:26 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ i				<-- current iteration
 */
 typedef struct new_dat
 {
+	mlx_t		*mlx;
+	mlx_image_t	*image;
 	t_com_num	z;
 	t_com_num	func_res;
 	t_com_num	deri_res;
@@ -105,6 +107,7 @@ typedef struct new_dat
 	int			y_c;
 	int			iter;
 	int			i;
+	int			c_i;
 }	t_new_dat;
 
 /*
@@ -151,6 +154,7 @@ t_com_num	ft_com_multiplication(t_com_num num1, t_com_num num2);
 t_com_num	ft_com_division(t_com_num den, t_com_num div);
 t_com_num	ft_com_pow(t_com_num num, int pow);
 t_com_num	ft_com_sum(t_com_num num1, t_com_num num2);
+t_com_num	ft_com_subtraction(t_com_num num1, t_com_num num2);
 double		ft_com_abs_value(t_com_num num);
 
 /*-----Functions for Mandelbrot set-----*/

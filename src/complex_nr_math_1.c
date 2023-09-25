@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:16:42 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/12 19:37:44 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:26:44 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,14 @@ t_com_num	ft_com_division(t_com_num den, t_com_num div)
 	real = ((den.real * div.real) + (den.imag * div.imag)) / common_div;
 	imag = ((den.imag * div.real) - (den.real * div.imag)) / common_div;
 	ft_com_num_init(&res, real, imag);
+	return (res);
+}
+
+t_com_num	ft_com_subtraction(t_com_num num1, t_com_num num2)
+{
+	t_com_num	res;
+
+	res.real = num1.real - num2.real;
+	res.imag = num1.imag - num2.imag;
 	return (res);
 }
