@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:59:20 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/21 19:18:06 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/26 20:51:05 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,14 @@ t_com_num	ft_com_multiplication(t_com_num num1, t_com_num num2)
 t_com_num	ft_com_pow(t_com_num num, int pow)
 {
 	t_com_num	res;
+	t_com_num	original;
 
 	res = num;
-	while ((pow - 1) > 0)
+	original = num;
+	pow -= 1;
+	while (pow > 0)
 	{
-		res = ft_com_multiplication(res, res);
+		res = ft_com_multiplication(res, original);
 		pow--;
 	}
 	return (res);

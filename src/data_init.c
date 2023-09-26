@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:29:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/25 20:39:02 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/26 21:14:24 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,6 @@ void	ft_fr_dat_init(t_dt *dt)
 		ft_new_dat_init(dt);
 }
 
-void	ft_new_roots_init(t_new_dat *new_dat)
-{
-	ft_com_num_init(&new_dat->roots[0], 1.0, 0.0);
-	ft_com_num_init(&new_dat->roots[1], 0.5, 0.86602540378);
-	ft_com_num_init(&new_dat->roots[2], 0.5, 0.86602540378);
-}
-
 /*Initializes struct for computing newton fractal*/
 void	ft_new_dat_init(t_dt *dt)
 {
@@ -60,16 +53,15 @@ void	ft_new_dat_init(t_dt *dt)
 	dt->new_dat->width = dt->width;
 	dt->new_dat->height = dt->height;
 	ft_com_num_init(&dt->new_dat->z, 0.0, 0.0);
-	ft_com_num_init(&dt->new_dat->func_res, 0.0, 0.0);
-	ft_com_num_init(&dt->new_dat->deri_res, 0.0, 0.0);
-	ft_com_num_init(&dt->new_dat->three, 3.0, 0.0);
-	ft_new_roots_init(dt->new_dat);
-	dt->new_dat->tolerance = 0.001;
+	ft_com_num_init(&dt->new_dat->roots[0], 1.0, 0.0);
+	ft_com_num_init(&dt->new_dat->roots[1], -0.5, (sqrt(3.0) / 2.0));
+	ft_com_num_init(&dt->new_dat->roots[2], -0.5, -(sqrt(3.0) / 2.0));
+	dt->new_dat->tolerance = 0.000001;
 	dt->new_dat->iter = 500;
 	dt->new_dat->i = 0;
 	dt->new_dat->c_i = 0;
-	dt->new_dat->div_x = 3.5 / dt->width;
-	dt->new_dat->div_y = 3.0 / dt->height;
+	dt->new_dat->div_x = 10.0 / dt->width;
+	dt->new_dat->div_y = 10.0 / dt->height;
 	dt->new_dat->x_c = 0;
 	dt->new_dat->y_c = 0;
 	dt->new_dat->x = 0.0;
