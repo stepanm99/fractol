@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 18:22:32 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/26 21:13:17 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/26 21:21:46 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ void	ft_new_derivation(t_new_dat *new_dat)
 void	ft_new_iter(t_new_dat *new_dat)
 {
 //	ft_printf("from ft_new_iter\n");
-	double	diff;
-
-	diff = 0.0;
 	while (new_dat->i <= new_dat->iter)
 	{
 		ft_new_function(new_dat);
