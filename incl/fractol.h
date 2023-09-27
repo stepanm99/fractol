@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/27 19:31:33 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/27 19:56:20 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,8 +145,8 @@ void		ft_put_fractal(t_dt *dt);
 /*ft_error: errno
 	0 -> number error (e.g.: in arg for Julia)*/
 void		ft_error(int errno, t_dt *dt);
-void		ft_print_nr_error(void);
-void		ft_print_help(void);
+void		ft_print_nr_error(t_dt *dt);
+void		ft_print_help(t_dt *dt);
 
 /*-----Functions for working with complex numbers-----*/
 void		ft_com_num_init(t_com_num *com_num, double real, double imag);

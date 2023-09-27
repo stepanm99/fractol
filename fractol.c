@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/27 18:57:40 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/27 20:39:55 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /*Parses the argument given to the program*/
 void ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
 {
+	ft_printf("argc: %i\n", argc);
 	if (argc <= 1)
 		dt->fr_flag = 1 ;
 	else if (ft_match(argv[1], "mandelbrot"))
@@ -23,14 +24,18 @@ void ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
 	else if (ft_match(argv[1], "julia"))
 	{
 		dt->fr_flag = 2;
-		dt->jul_x = ft_atof(argv[2], dt);
-		dt->jul_y = ft_atof(argv[3], dt);
+		if (argc == 4)
+		{
+			dt->jul_x = ft_atof(argv[2], dt);
+			dt->jul_y = ft_atof(argv[3], dt);
+		}
 	}
 	else if (ft_match(argv[1], "newton"))
 	{
-		ft_printf("newton detected \n");
 		dt->fr_flag = 3;
 	}
+	else if (ft_match(argv[1], "-h"))
+		ft_print_help(dt);
 }
 
 /*Frees all allocated memory*/

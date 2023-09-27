@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 22:20:07 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/21 18:54:46 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/27 20:42:25 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,12 @@ int	ft_atof_str_check(const char *str)
 /*Converts array to floating point number of double type*/
 double	ft_atof(const char *str, t_dt *dt)
 {
+	ft_printf("from ft_atof\n");
 	int		i;
 	int		negflag;
 	double	n;
 
-	if (ft_atof_str_check(str))
+	if (!ft_atof_str_check(str))
 		ft_error(0, dt);
 	i = 0;
 	n = 0;
