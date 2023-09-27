@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 18:22:32 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/27 16:17:29 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:12:29 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ void	ft_new_check_roots(t_new_dat *new_dat)
 
 	xdiff = 0.0;
 	ydiff = 0.0;
-	while (new_dat->c_i <= 2)
+	while (new_dat->c_i <= 3)
 	{
 		xdiff = (new_dat->z.real - new_dat->roots[new_dat->c_i].real);
 		ydiff = (new_dat->z.imag - new_dat->roots[new_dat->c_i].imag);
 //		printf("xdiff: %f\nydiff: %f\n", xdiff, ydiff);
 //		printf("root%i: %f %fi\n", new_dat->c_i, new_dat->roots[new_dat->c_i].real, new_dat->roots[new_dat->c_i].imag);
-		if ((xdiff <= new_dat->tolerance) && (ydiff <= new_dat->tolerance))
+		if ((fabs(xdiff) <= new_dat->tolerance) && (fabs(ydiff) <= new_dat->tolerance))
 		{
 			ft_new_color(new_dat);
 			return ;
