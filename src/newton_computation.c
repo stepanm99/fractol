@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 18:22:32 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/26 21:21:46 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:17:29 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,29 @@ void	ft_new_derivation(t_new_dat *new_dat)
 		new_dat->three);
 }
 
+void	ft_new_check_roots(t_new_dat *new_dat)
+{
+	double	xdiff;
+	double	ydiff;
+
+	xdiff = 0.0;
+	ydiff = 0.0;
+	while (new_dat->c_i <= 2)
+	{
+		xdiff = (new_dat->z.real - new_dat->roots[new_dat->c_i].real);
+		ydiff = (new_dat->z.imag - new_dat->roots[new_dat->c_i].imag);
+//		printf("xdiff: %f\nydiff: %f\n", xdiff, ydiff);
+//		printf("root%i: %f %fi\n", new_dat->c_i, new_dat->roots[new_dat->c_i].real, new_dat->roots[new_dat->c_i].imag);
+		if ((xdiff <= new_dat->tolerance) && (ydiff <= new_dat->tolerance))
+		{
+			ft_new_color(new_dat);
+			return ;
+		}
+		new_dat->c_i++;
+	}
+	new_dat->c_i = 0;
+}
+
 void	ft_new_iter(t_new_dat *new_dat)
 {
 //	ft_printf("from ft_new_iter\n");
@@ -59,17 +82,8 @@ void	ft_new_iter(t_new_dat *new_dat)
 		ft_new_derivation(new_dat);
 		new_dat->z = ft_com_subtraction(new_dat->z,
 			ft_com_division(new_dat->func_res, new_dat->deri_res));
-		while (new_dat->c_i <= 2)
-		{
-			if (((new_dat->z.real - new_dat->roots[new_dat->c_i].real) <= new_dat->tolerance)
-				&& ((new_dat->z.imag - new_dat->roots[new_dat->c_i].imag) <= new_dat->tolerance))
-			{
-				ft_new_color(new_dat);
-				break ;
-			}
-			new_dat->c_i++;
-		}
-		new_dat->c_i = 0;
+//		printf("z: %f %fi\n", new_dat->z.real, new_dat->z.imag);
+		ft_new_check_roots(new_dat);
 		new_dat->i++;
 	}
 }
@@ -96,7 +110,4 @@ void	ft_new_comp(t_dt *dt)
 	}
 	dt->new_dat->x_c = 0;
 	dt->new_dat->y_c = 0;
-	printf("root1: %f %fi\n", dt->new_dat->roots[0].real, dt->new_dat->roots[0].imag);
-	printf("root2: %f %fi\n", dt->new_dat->roots[1].real, dt->new_dat->roots[1].imag);
-	printf("root3: %f %fi\n", dt->new_dat->roots[2].real, dt->new_dat->roots[2].imag);
 }

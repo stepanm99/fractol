@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:29:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/26 21:14:24 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:03:57 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ void	ft_new_dat_init(t_dt *dt)
 	dt->new_dat->image = dt->image;
 	dt->new_dat->width = dt->width;
 	dt->new_dat->height = dt->height;
+	ft_com_num_init(&dt->new_dat->deri_res, 0.0, 0.0);
+	ft_com_num_init(&dt->new_dat->func_res, 0.0, 0.0);
+	ft_com_num_init(&dt->new_dat->three, 3.0, 0.0);
 	ft_com_num_init(&dt->new_dat->z, 0.0, 0.0);
 	ft_com_num_init(&dt->new_dat->roots[0], 1.0, 0.0);
 	ft_com_num_init(&dt->new_dat->roots[1], -0.5, (sqrt(3.0) / 2.0));

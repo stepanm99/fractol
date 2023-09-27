@@ -6,7 +6,7 @@
 #    By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 16:06:38 by smelicha          #+#    #+#              #
-#    Updated: 2023/09/26 20:10:11 by smelicha         ###   ########.fr        #
+#    Updated: 2023/09/27 16:05:55 by smelicha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ PRINTFLIB = ./ft_printf/libftprintf.a
 MATHLIB = -lm
 #Compiler stuff:
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -O3
 
 OBJ	= $(SRC:.c=.o)
 
