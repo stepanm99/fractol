@@ -6,13 +6,14 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 17:12:24 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 15:25:47 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 16:15:30 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/fractol.h"
 
-/*Function to get complex lane coordinates for Julia computation*/
+/*Function to get complex plane coordinates under the cursor in Mandelbrot view
+	for Julia computation*/
 void	ft_get_jul(t_man_dat *man_dat)
 {
 	int	x;

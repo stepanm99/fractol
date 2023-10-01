@@ -6,13 +6,13 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:29:39 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 15:47:25 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 16:13:41 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/fractol.h"
 
-/*Decides which fractal to compute according to the user input*/
+/*Decides which fractal to compute according to dt->fr_flag*/
 void	ft_put_fractal(t_dt *dt)
 {
 	if (dt->fr_flag == 1)

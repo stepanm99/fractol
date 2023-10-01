@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 15:36:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 15:44:00 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 16:10:36 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	ft_view_jul_from_man(t_dt *dt)
 	ft_put_fractal(dt);
 }
 
-/*Changes the constants for color computation*/
+/*Changes the constants for color computation (for Julia and Mandelbrot)*/
 void	ft_view_change_color(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)

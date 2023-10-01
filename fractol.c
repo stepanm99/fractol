@@ -6,14 +6,14 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 15:54:54 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 20:50:40 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./incl/fractol.h"
 
 /*Parses the argument given to the program*/
-void	ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
+static void	ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
 {
 	ft_printf("argc: %i\n", argc);
 	if (argc <= 1)
@@ -23,8 +23,11 @@ void	ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
 	else if (ft_match(argv[1], "julia"))
 	{
 		dt->fr_flag = 2;
-		if (argc == 4)
+		if (argv[2] && !argv[3])
+			ft_error(0, dt);
+		if (argv[2] && argv[3])
 		{
+			ft_printf("from ifargv\n");
 			dt->jul_x = ft_atof(argv[2], dt);
 			dt->jul_y = ft_atof(argv[3], dt);
 		}
@@ -44,10 +47,15 @@ void	ft_data_free(t_dt *dt)
 		free(dt->man_dat);
 	if (dt->new_dat)
 		free(dt->new_dat);
+//	if (dt->mlx)
+//	{
+//		mlx_close_window(dt->mlx);
+//		mlx_terminate(dt->mlx);
+//	}
 	free(dt);
 }
 
-int	main_1(t_dt *dt)
+static int	main_1(t_dt *dt)
 {
 	int32_t	mlx_img_t_window;
 
@@ -63,7 +71,6 @@ int	main_1(t_dt *dt)
 	mlx_loop_hook(dt->mlx, ft_key_control, dt);
 	mlx_scroll_hook(dt->mlx, ft_scroll, dt);
 	mlx_loop(dt->mlx);
-	mlx_terminate(dt->mlx);
 	ft_data_free(dt);
 	return (EXIT_SUCCESS);
 }

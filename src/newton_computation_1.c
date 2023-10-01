@@ -6,12 +6,13 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 15:26:29 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 15:27:17 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 16:16:28 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/fractol.h"
 
+/*Decides what color is the point according to which root the point converges*/
 void	ft_new_color(t_new_dat	*new_dat)
 {
 	if (new_dat->c_i == 0)

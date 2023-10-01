@@ -3,129 +3,40 @@
 #include<stdio.h>
 
 
-/*Function for complex number division
-	den		-> denominator
-	div		-> divisor
-*/
-t_com_num	ft_com_division(t_com_num den, t_com_num div)
+int	ft_int_str_check(const char *str)
 {
-	t_com_num	res;
-	double		real;
-	double		imag;
-	double		common_div;
+	int	i;
+	int	flag;
+	int	p_flag;
 
-	common_div = pow(div.real, 2.0) + pow(div.imag, 2.0);
-	real = ((den.real * div.real) + (den.imag * div.imag)) / common_div;
-	imag = ((den.imag * div.real) - (den.real * div.imag)) / common_div;
-	ft_com_num_init(&res, real, imag);
-	return (res);
-}
-
-t_com_num	ft_com_subtraction(t_com_num num1, t_com_num num2)
-{
-	t_com_num	res;
-
-	res.real = num1.real - num2.real;
-	res.imag = num1.imag - num2.imag;
-	return (res);
-}
-
-/*Initialization of a complex number*/
-void	ft_com_num_init(t_com_num *com_num, double real, double imag)
-{
-	com_num->real = real;
-	com_num->imag = imag;
-}
-
-/*Multiplication of two comlex numbers stored as t_com_num*/
-t_com_num	ft_com_multiplication(t_com_num num1, t_com_num num2)
-{
-	t_com_num	res;
-
-	res.real = ((num1.real * num2.real) - (num1.imag * num2.imag));
-	res.imag = ((num1.real * num2.imag) + (num1.imag * num2.real));
-	return (res);
-}
-
-/*Power function of complex number*/
-t_com_num	ft_com_pow(t_com_num num, int pow)
-{
-	t_com_num	res;
-	t_com_num	original;
-
-	res = num;
-	original = num;
-	pow -= 1;
-	while (pow > 0)
+	i = 0;
+	flag = 0;
+	p_flag = 0;
+	while (str[i] != '\0')
 	{
-		res = ft_com_multiplication(res, original);
-		pow--;
+		if ((str[i] < '0' || str[i] > '9') || (str[i] != '.'))
+			flag = 1;
+		i++;
+		if (str[i] == '.')
+			p_flag++;
 	}
-	return (res);
+	if (p_flag != 1)
+		return (0);
+	return (flag);
 }
 
-/*Sum of two complex numbers stored as t_com_num*/
-t_com_num	ft_com_sum(t_com_num num1, t_com_num num2)
+int	main(void)
 {
-	t_com_num	res;
+	char	string[] = "test";
+	char	numwl[] = "12e3456789";
+	char	num[] = "01234.56.789";
+	char	ln[] = "a0123456789";
+	char	nl[] = "0123456789a";
 
-	res.real = num1.real + num2.real;
-	res.imag = num1.imag + num2.imag;
-	return (res);
-}
-
-double	ft_com_abs_value(t_com_num num)
-{
-	return (sqrt((num.real * num.real) + (num.imag * num.imag)));
-}
-
-int	main()
-{
-	t_com_num	test1;
-	t_com_num	test2;
-	t_com_num	result;
-	double		abs;
-
-	abs = 0.0;
-	ft_com_num_init(&test1, 1.0, 3.0);
-	ft_com_num_init(&test2, 1.0, 2.0);
-	ft_com_num_init(&result, 0.0, 0.0);
-	printf("result: %f %fi\n", result.real, result.imag);
-	printf("test1: %f %fi\n", test1.real, test1.imag);
-	printf("test2: %f %fi\n", test2.real, test2.imag);
-
-	printf("\ndivision\n");
-	result = ft_com_division(test1, test2);
-	printf("result: %f %fi\n", result.real, result.imag);
-	printf("test1: %f %fi\n", test1.real, test1.imag);
-	printf("test2: %f %fi\n", test2.real, test2.imag);
-
-	printf("\nmultiplication\n");
-	result = ft_com_multiplication(test1, test2);
-	printf("result: %f %fi\n", result.real, result.imag);
-	printf("test1: %f %fi\n", test1.real, test1.imag);
-	printf("test2: %f %fi\n", test2.real, test2.imag);
-
-	printf("\naddition\n");
-	result = ft_com_sum(test1, test2);
-	printf("result: %f %fi\n", result.real, result.imag);
-	printf("test1: %f %fi\n", test1.real, test1.imag);
-	printf("test2: %f %fi\n", test2.real, test2.imag);
-
-	printf("\nsubstraction\n");
-	result = ft_com_subtraction(test1, test2);
-	printf("result: %f %fi\n", result.real, result.imag);
-	printf("test1: %f %fi\n", test1.real, test1.imag);
-	printf("test2: %f %fi\n", test2.real, test2.imag);
-
-	printf("\npower (test1 to three)\n");
-	result = ft_com_pow(test1, 3);
-	printf("result: %f %fi\n", result.real, result.imag);
-	printf("test1: %f %fi\n", test1.real, test1.imag);
-	printf("test2: %f %fi\n", test2.real, test2.imag);
-
-	printf("\nabsolute value (test1)\n");
-	abs = ft_com_abs_value(result);
-	printf("abs: %f\n", abs);
+	printf("%s: %i\n", string, ft_int_str_check(string));
+	printf("%s: %i\n", numwl, ft_int_str_check(numwl));
+	printf("%s: %i\n", num, ft_int_str_check(num));
+	printf("%s: %i\n", ln, ft_int_str_check(ln));
+	printf("%s: %i\n", nl, ft_int_str_check(nl));
 	return (0);
 }

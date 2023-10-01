@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 15:41:58 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 16:25:29 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct man_num
 	t_com_num	c;
 }	t_man_num;
 
+/*Struct for coeficcients used for color computation of Mandelbrot set*/
 typedef struct man_col
 {
 	int	r_coef;
@@ -79,12 +80,19 @@ typedef struct man_dat
 /*
 -----------------Newton fractal data struct-----------------
 z				<-- complex number to compute with
-func_res		<-- result of normal function
-deri_res		<-- result of derivative of the former function
+func_res		<-- result of the function
+deri_res		<-- result of derivative of the function
 roots[3]		<-- array with roots of the polynom
 tolerance		<-- of the points' distance from root
-iter			<-- limit of iterations
-i				<-- current iteration
+div_x, div_y	<-- width of complex plane divided by width in pixels
+					=> width of an pixel on a complex plane
+x, y			<-- complex plane coordinates to shift image in the plane
+zoom			<-- zoom
+width, height	<-- of the picture in pixels
+x_c, y_c		<-- complex plane coordinates of the point that is
+					currently computed
+iter			<-- limit number of iterations for each point
+i				<-- index variable for iterations
 */
 typedef struct new_dat
 {
@@ -113,6 +121,7 @@ typedef struct new_dat
 /*
 -----------------Program data struct-----------------
 width, height	<-- of the picture in pixels
+jul_x, jul_y	<-- coordinates from argument for Julia when executing program
 fr_flag			<-- flag for fractal type
 					1 = Mandelbrot
 					2 = Julia
@@ -132,6 +141,7 @@ typedef struct dt
 }	t_dt;
 
 /*-----Program functions-----*/
+
 t_dt		*ft_dt_init(void);
 void		ft_data_free(t_dt *dt);
 void		ft_scroll(double xdelta, double ydelta, void *param);
@@ -141,6 +151,7 @@ void		ft_fr_dat_init(t_dt *dt);
 void		ft_put_fractal(t_dt *dt);
 
 /*-----Control functions-----*/
+
 void		ft_key_control(void *param);
 void		ft_key_control_1(t_dt *dt);
 void		ft_view_change_color(t_dt *dt);
@@ -159,13 +170,13 @@ void		ft_scroll_new(double xdelta, double ydelta, t_dt *dt);
 void		ft_scroll_man(double xdelta, double ydelta, t_dt *dt);
 
 /*-----Error & help functions-----*/
-/*ft_error: errno
-	0 -> number error (e.g.: in arg for Julia)*/
+
 void		ft_error(int errno, t_dt *dt);
 void		ft_print_nr_error(t_dt *dt);
 void		ft_print_help(t_dt *dt);
 
 /*-----Functions for working with complex numbers-----*/
+
 void		ft_com_num_init(t_com_num *com_num, double real, double imag);
 t_com_num	ft_com_multiplication(t_com_num num1, t_com_num num2);
 t_com_num	ft_com_division(t_com_num den, t_com_num div);

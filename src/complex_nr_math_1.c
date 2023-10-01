@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:16:42 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/26 20:19:26 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 16:08:22 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ t_com_num	ft_com_division(t_com_num den, t_com_num div)
 	return (res);
 }
 
+/*Function for complex number substraction
+	num1 - num2*/
 t_com_num	ft_com_subtraction(t_com_num num1, t_com_num num2)
 {
 	t_com_num	res;

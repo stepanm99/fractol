@@ -6,18 +6,20 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 18:22:32 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 15:27:20 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 16:18:18 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/fractol.h"
 
+/*Base polynomial function to compute newton fractal*/
 void	ft_new_function(t_new_dat *new_dat)
 {
 	new_dat->func_res = ft_com_pow(new_dat->z, 3);
 	new_dat->func_res.real -= 1;
 }
 
+/*Derivation of the base function*/
 void	ft_new_derivation(t_new_dat *new_dat)
 {
 	new_dat->deri_res = ft_com_pow(new_dat->z, 2);
@@ -25,6 +27,7 @@ void	ft_new_derivation(t_new_dat *new_dat)
 			new_dat->three);
 }
 
+/*Checks to which root the computed point is converging*/
 void	ft_new_check_roots(t_new_dat *new_dat)
 {
 	double	xdiff;
@@ -44,6 +47,7 @@ void	ft_new_check_roots(t_new_dat *new_dat)
 	new_dat->c_i = 0;
 }
 
+/*One iteration of Newton fractal computation*/
 void	ft_new_iter(t_new_dat *new_dat)
 {
 	while (new_dat->i <= new_dat->iter)
@@ -57,6 +61,7 @@ void	ft_new_iter(t_new_dat *new_dat)
 	}
 }
 
+/*Algorithm for Newton fractal computation*/
 void	ft_new_comp(t_dt *dt)
 {
 	while (dt->new_dat->y_c < dt->new_dat->height)

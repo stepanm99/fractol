@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:59:56 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 15:24:55 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 16:15:50 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_mandel_iteration(t_man_dat *man_dat)
 	}
 }
 
-/*Algorithm to compute all points of the image*/
+/*Algorithm to compute all points of the Mandelbrot fractal*/
 void	ft_mandel_comp(t_dt *dt)
 {
 	while (dt->man_dat->y_c < dt->man_dat->height)

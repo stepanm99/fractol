@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:29:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 15:49:33 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 17:56:55 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_new_dat_init(t_dt *dt)
 	dt->new_dat->zoom = 1.0;
 }
 
-/*Checks if the desired fractal is Julia, if user gives coordinates when
+/*Checks if the requested fractal is Julia, if user gives coordinates when
 starting the program it saves them to the struct*/
 void	ft_jul_init_check(t_dt *dt)
 {
