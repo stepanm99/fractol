@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 22:20:07 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/27 20:42:25 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:33:35 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ double	ft_atof_before_point(const char *str, int *i)
 	double	n;
 
 	n = 0.0;
-	while ((str[*i] >= '0' && str[*i] <= '9') && (str[*i] != '.' || str[*i] != '\0'))
+	while ((str[*i] >= '0' && str[*i] <= '9') && (str[*i] != '.'
+			|| str[*i] != '\0'))
 	{
 		n = n * 10 + (str[*i] - '0');
 		*i += 1;
@@ -73,7 +74,6 @@ int	ft_atof_str_check(const char *str)
 /*Converts array to floating point number of double type*/
 double	ft_atof(const char *str, t_dt *dt)
 {
-	ft_printf("from ft_atof\n");
 	int		i;
 	int		negflag;
 	double	n;

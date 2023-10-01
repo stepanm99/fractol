@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 17:12:24 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/18 20:29:41 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:25:47 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	ft_get_jul(t_man_dat *man_dat)
 	if ((x <= 0 || y <= 0) || (x >= man_dat->width || y >= man_dat->height))
 		return ;
 	man_dat->jul_x = (((((double)x * man_dat->div_x) - 2.0)
-						/ man_dat->zoom) + man_dat->x);
+				/ man_dat->zoom) + man_dat->x);
 	man_dat->jul_y = (((((double)y * man_dat->div_y) - 1.12)
-						/ man_dat->zoom) + man_dat->y);
+				/ man_dat->zoom) + man_dat->y);
 	man_dat->zoom = 1;
 }
 

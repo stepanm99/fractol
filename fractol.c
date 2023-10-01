@@ -6,15 +6,14 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/27 20:39:55 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:54:54 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "./incl/fractol.h"
 
 /*Parses the argument given to the program*/
-void ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
+void	ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
 {
 	ft_printf("argc: %i\n", argc);
 	if (argc <= 1)
@@ -48,29 +47,17 @@ void	ft_data_free(t_dt *dt)
 	free(dt);
 }
 
-int	main(int argc, const char *argv[])
+int	main_1(t_dt *dt)
 {
-	t_dt	*dt;
+	int32_t	mlx_img_t_window;
 
-	dt = ft_dt_init();
-	if (!(dt->mlx = mlx_init(dt->width, dt->height, "FRACTOL", false)))
-	{
-		ft_printf(mlx_strerror(mlx_errno));
-		return (EXIT_FAILURE);
-	}
-	if (!(dt->image = mlx_new_image(dt->mlx, dt->width, dt->height)))
+	mlx_img_t_window = mlx_image_to_window(dt->mlx, dt->image, 0, 0);
+	if (mlx_img_t_window == -1)
 	{
 		mlx_close_window(dt->mlx);
 		ft_printf(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
-	if (mlx_image_to_window(dt->mlx, dt->image, 0, 0) == -1)
-	{
-		mlx_close_window(dt->mlx);
-		ft_printf(mlx_strerror(mlx_errno));
-		return (EXIT_FAILURE);
-	}
-	ft_arg_resolve(dt, argc, argv);
 	ft_fr_dat_init(dt);
 	ft_put_fractal(dt);
 	mlx_loop_hook(dt->mlx, ft_key_control, dt);
@@ -79,4 +66,26 @@ int	main(int argc, const char *argv[])
 	mlx_terminate(dt->mlx);
 	ft_data_free(dt);
 	return (EXIT_SUCCESS);
+}
+
+int	main(int argc, const char *argv[])
+{
+	t_dt	*dt;
+
+	dt = ft_dt_init();
+	ft_arg_resolve(dt, argc, argv);
+	dt->mlx = mlx_init(dt->width, dt->height, "FRACTOL", false);
+	if (!dt->mlx)
+	{
+		ft_printf(mlx_strerror(mlx_errno));
+		return (EXIT_FAILURE);
+	}
+	dt->image = mlx_new_image(dt->mlx, dt->width, dt->height);
+	if (!dt->image)
+	{
+		mlx_close_window(dt->mlx);
+		ft_printf(mlx_strerror(mlx_errno));
+		return (EXIT_FAILURE);
+	}
+	return (main_1(dt));
 }

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 17:59:56 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/18 20:22:42 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:24:55 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	ft_mandel_outside_color(t_man_dat *man_dat)
 	mlx_put_pixel(man_dat->image, man_dat->x_c, man_dat->y_c,
 		((int)((man_dat->i + smooth_coef) * man_dat->man_col.r_coef) << 24
 			| (int)(man_dat->i + smooth_coef) * man_dat->man_col.g_coef << 16
-			| (int)(man_dat->i + smooth_coef) * man_dat->man_col.b_coef << 8 | 255));
+			| (int)(man_dat->i + smooth_coef)
+			* man_dat->man_col.b_coef << 8 | 255));
 }
 
 /*Algorithm for iterative computation, and decision whether it belongs into

@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/27 19:56:20 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:41:58 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,12 +134,29 @@ typedef struct dt
 /*-----Program functions-----*/
 t_dt		*ft_dt_init(void);
 void		ft_data_free(t_dt *dt);
-void		ft_key_control(void *param);
 void		ft_scroll(double xdelta, double ydelta, void *param);
 double		ft_atof(const char *str, t_dt *dt);
 int			ft_match(const char *str1, const char *str2);
 void		ft_fr_dat_init(t_dt *dt);
 void		ft_put_fractal(t_dt *dt);
+
+/*-----Control functions-----*/
+void		ft_key_control(void *param);
+void		ft_key_control_1(t_dt *dt);
+void		ft_view_change_color(t_dt *dt);
+void		ft_view_jul_from_man(t_dt *dt);
+void		ft_view_iter_less(t_dt *dt);
+void		ft_view_iter_more(t_dt *dt);
+void		ft_view_home(t_dt *dt);
+void		ft_view_zoom_up(t_dt *dt);
+void		ft_view_zoom_down(t_dt *dt);
+void		ft_view_pan_right(t_dt *dt);
+void		ft_view_pan_left(t_dt *dt);
+void		ft_view_pan_down(t_dt *dt);
+void		ft_view_pan_up(t_dt *dt);
+void		ft_scroll(double xdelta, double ydelta, void *param);
+void		ft_scroll_new(double xdelta, double ydelta, t_dt *dt);
+void		ft_scroll_man(double xdelta, double ydelta, t_dt *dt);
 
 /*-----Error & help functions-----*/
 /*ft_error: errno
@@ -173,5 +190,6 @@ void		ft_get_jul(t_man_dat *man_dat);
 void		ft_new_dat_init(t_dt *dt);
 void		ft_new_comp(t_dt *dt);
 void		ft_new_iter(t_new_dat *new_dat);
+void		ft_new_color(t_new_dat	*new_dat);
 
 #endif

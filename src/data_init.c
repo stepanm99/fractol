@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:29:45 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/27 20:52:42 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:49:33 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_dt	*ft_dt_init(void)
 	dt->jul_y = -0.355;
 	dt->man_dat = NULL;
 	dt->new_dat = NULL;
-	return(dt);
+	return (dt);
 }
 
 /*Decides which struct gets initialized based on the desired fractal*/
@@ -44,7 +44,6 @@ void	ft_fr_dat_init(t_dt *dt)
 /*Initializes struct for computing newton fractal*/
 void	ft_new_dat_init(t_dt *dt)
 {
-	ft_printf("from new dat init\n");
 	dt->new_dat = malloc(sizeof(t_new_dat));
 	if (!dt->new_dat)
 		return ;
@@ -104,7 +103,7 @@ void	ft_man_dat_init(t_dt *dt)
 	dt->man_dat->zoom = 1.0;
 	dt->man_dat->x_c = 0;
 	dt->man_dat->y_c = 0;
-	dt->man_dat->iter = 250;
+	dt->man_dat->iter = 50;
 	dt->man_dat->i = 0;
 	dt->man_dat->man_col.r_coef = 8;
 	dt->man_dat->man_col.g_coef = 5;

@@ -6,31 +6,11 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 18:22:32 by smelicha          #+#    #+#             */
-/*   Updated: 2023/09/27 19:32:15 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:27:20 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/fractol.h"
-#include<stdio.h>
-
-void	ft_new_color(t_new_dat	*new_dat)
-{
-	if (new_dat->c_i == 0)
-	{
-		mlx_put_pixel(new_dat->image, new_dat->x_c, new_dat->y_c, 0xff0000ff);
-		return ;
-	}
-	if (new_dat->c_i == 1)
-	{
-		mlx_put_pixel(new_dat->image, new_dat->x_c, new_dat->y_c, 0x00ff00ff);
-		return ;
-	}
-	if (new_dat->c_i == 2)
-	{
-		mlx_put_pixel(new_dat->image, new_dat->x_c, new_dat->y_c, 0x0000ffff);
-		return ;
-	}
-}
 
 void	ft_new_function(t_new_dat *new_dat)
 {
@@ -42,7 +22,7 @@ void	ft_new_derivation(t_new_dat *new_dat)
 {
 	new_dat->deri_res = ft_com_pow(new_dat->z, 2);
 	new_dat->deri_res = ft_com_multiplication(new_dat->deri_res,
-		new_dat->three);
+			new_dat->three);
 }
 
 void	ft_new_check_roots(t_new_dat *new_dat)
@@ -56,8 +36,9 @@ void	ft_new_check_roots(t_new_dat *new_dat)
 	{
 		xdiff = (new_dat->z.real - new_dat->roots[new_dat->c_i].real);
 		ydiff = (new_dat->z.imag - new_dat->roots[new_dat->c_i].imag);
-		if ((fabs(xdiff) <= new_dat->tolerance) && (fabs(ydiff) <= new_dat->tolerance))
-				ft_new_color(new_dat);
+		if ((fabs(xdiff) <= new_dat->tolerance)
+			&& (fabs(ydiff) <= new_dat->tolerance))
+			ft_new_color(new_dat);
 		new_dat->c_i++;
 	}
 	new_dat->c_i = 0;
@@ -70,7 +51,7 @@ void	ft_new_iter(t_new_dat *new_dat)
 		ft_new_function(new_dat);
 		ft_new_derivation(new_dat);
 		new_dat->z = ft_com_subtraction(new_dat->z,
-			ft_com_division(new_dat->func_res, new_dat->deri_res));
+				ft_com_division(new_dat->func_res, new_dat->deri_res));
 		ft_new_check_roots(new_dat);
 		new_dat->i++;
 	}
