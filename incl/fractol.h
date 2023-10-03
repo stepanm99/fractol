@@ -6,15 +6,13 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 16:25:29 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:15:16 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <stdlib.h>
-# include <stdbool.h>
 # include <math.h>
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../ft_printf/incl/ft_printf.h"
@@ -186,6 +184,7 @@ t_com_num	ft_com_subtraction(t_com_num num1, t_com_num num2);
 double		ft_com_abs_value(t_com_num num);
 
 /*-----Functions for Mandelbrot set-----*/
+
 void		ft_man_dat_init(t_dt *dt);
 void		ft_mandel_comp(t_dt *dt);
 void		ft_mandel_iteration(t_man_dat *man_dat);
@@ -194,10 +193,12 @@ void		ft_mandel_outside_color(t_man_dat *man_dat);
 void		ft_mandel_color_rand(t_man_dat *man_dat);
 
 /*-----Functions for Julia set-----*/
+
 void		ft_jul_comp(t_dt *dt);
 void		ft_get_jul(t_man_dat *man_dat);
 
 /*-----Functions for Newton fractal-----*/
+
 void		ft_new_dat_init(t_dt *dt);
 void		ft_new_comp(t_dt *dt);
 void		ft_new_iter(t_new_dat *new_dat);

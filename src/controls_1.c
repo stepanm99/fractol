@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 15:36:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 16:10:36 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:12:17 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ void	ft_view_home(t_dt *dt)
 		dt->man_dat->y = 0.0;
 		dt->man_dat->jul_x = 0.0;
 		dt->man_dat->jul_y = 0.0;
-		ft_printf("home\n");
 	}
 	if (dt->fr_flag == 3)
 	{
 		dt->new_dat->zoom = 1;
 		dt->new_dat->x = 0;
 		dt->new_dat->y = 0;
-		ft_printf("home\n");
 	}
 	ft_put_fractal(dt);
 }

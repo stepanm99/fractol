@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/03 11:43:40 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:08:23 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,6 @@ void	ft_data_free(t_dt *dt)
 		free(dt->man_dat);
 	if (dt->new_dat)
 		free(dt->new_dat);
-//	if (dt->mlx)
-//	{
-//		mlx_close_window(dt->mlx);
-//		mlx_terminate(dt->mlx);
-//	}
 	free(dt);
 }
 

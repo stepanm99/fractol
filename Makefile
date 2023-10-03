@@ -6,7 +6,7 @@
 #    By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 16:06:38 by smelicha          #+#    #+#              #
-#    Updated: 2023/10/03 11:41:33 by smelicha         ###   ########.fr        #
+#    Updated: 2023/10/03 12:07:44 by smelicha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ PRINTFLIB = ./ft_printf/libftprintf.a
 MATHLIB = -lm
 #Compiler stuff:
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -O3
+DFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -static-libsan
 
 OBJ	= $(SRC:.c=.o)
 
@@ -33,7 +34,7 @@ all: printf libmlx glfw $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "Linking $@"
-	@$(CC) $(OBJ) $(LIBMLX) $(MLXLIB) $(PRINTFLIB) $(MATHLIB) $(FLAGS) -fsanitize=address -static-libsan -o $(NAME)
+	@$(CC) $(OBJ) $(LIBMLX) $(MLXLIB) $(PRINTFLIB) $(MATHLIB) $(FLAGS) -o $(NAME)
 	@echo "Done!"
 
 printf:

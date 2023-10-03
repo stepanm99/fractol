@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 15:45:53 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 17:55:19 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:13:59 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,9 @@ void	ft_scroll(double xdelta, double ydelta, void *param)
 void	ft_view_zoom_down(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
-	{
-		ft_printf("+\n");
 		dt->man_dat->zoom += dt->man_dat->zoom / 3;
-	}
 	if (dt->fr_flag == 3)
-	{
-		ft_printf("+\n");
 		dt->new_dat->zoom += dt->new_dat->zoom / 3;
-	}
 	ft_put_fractal(dt);
 }
 
@@ -58,14 +52,8 @@ void	ft_view_zoom_down(t_dt *dt)
 void	ft_view_zoom_up(t_dt *dt)
 {
 	if (dt->fr_flag == 1 || dt->fr_flag == 2)
-	{
-		ft_printf("-\n");
 		dt->man_dat->zoom -= dt->man_dat->zoom / 3;
-	}
 	if (dt->fr_flag == 3)
-	{
-		ft_printf("-\n");
 		dt->new_dat->zoom -= dt->new_dat->zoom / 3;
-	}
 	ft_put_fractal(dt);
 }
