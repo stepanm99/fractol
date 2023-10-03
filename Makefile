@@ -6,7 +6,7 @@
 #    By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 16:06:38 by smelicha          #+#    #+#              #
-#    Updated: 2023/10/02 15:42:38 by smelicha         ###   ########.fr        #
+#    Updated: 2023/10/03 11:41:33 by smelicha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ all: printf libmlx glfw $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "Linking $@"
-	@$(CC) $(OBJ) $(LIBMLX) $(MLXLIB) $(PRINTFLIB) $(MATHLIB) $(FLAGS) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBMLX) $(MLXLIB) $(PRINTFLIB) $(MATHLIB) $(FLAGS) -fsanitize=address -static-libsan -o $(NAME)
 	@echo "Done!"
 
 printf:

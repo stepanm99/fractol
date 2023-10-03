@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 22:20:07 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 20:49:20 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:58:12 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ int	ft_atof_str_check(const char *str)
 	int	p_flag;
 
 	i = 0;
-	flag = 0;
+	flag = 1;
 	p_flag = 0;
-	while (str[i] != '\0')
+	while (str[i] != '\0' && flag == 1)
 	{
-		if ((str[i] < '0' || str[i] > '9') || (str[i] != '.'))
-			flag = 1;
+		if (!((str[i] < '0' || str[i] > '9') || (str[i] != '.')))
+			flag = 0;
 		i++;
 		if (str[i] == '.')
 			p_flag++;
@@ -77,7 +77,7 @@ double	ft_atof(const char *str, t_dt *dt)
 	int		negflag;
 	double	n;
 
-	if (ft_atof_str_check(str))
+	if (!ft_atof_str_check(str))
 		ft_error(0, dt);
 	i = 0;
 	n = 0;

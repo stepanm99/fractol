@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 20:50:40 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:43:40 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static void	ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
 	}
 	else if (ft_match(argv[1], "-h"))
 		ft_print_help(dt);
+	else
+		ft_error(1, dt);
 }
 
 /*Frees all allocated memory*/

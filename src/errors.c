@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:53:33 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/01 20:39:52 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:00:11 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_print_help(t_dt *dt)
 
 void	ft_print_arg_error(t_dt *dt)
 {
-	ft_printf("\nERROR: Unknown argument :\n\n\n");
+	ft_printf("\nERROR: Unknown argument :(\n\n\n");
 	ft_print_help(dt);
 }
 
@@ -54,8 +54,7 @@ void	ft_print_res_error(t_dt *dt)
 
 /*ft_error: errno
 	0 -> number error (e.g.: in arg for Julia)
-	1 -> wrong argument
-	2 -> wrong resolution*/
+	1 -> wrong argument*/
 void	ft_error(int errno, t_dt *dt)
 {
 	if (errno == 0)
