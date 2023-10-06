@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:53:33 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/06 15:06:43 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:11:16 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_print_nr_error(t_dt *dt)
 void	ft_print_too_big_arg(t_dt *dt)
 {
 	ft_printf("\nERROR: Number is too big or with too ");
-	ft_printf("many decimal places >:(\n\n\n");
+	ft_printf("many decimal places (max. 9) >:(\n\n\n");
 	ft_print_help(dt);
 }
 
