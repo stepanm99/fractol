@@ -6,38 +6,48 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 22:20:07 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/03 11:58:12 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:53:10 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/fractol.h"
 
-double	ft_atof_before_point(const char *str, int *i)
-{
-	double	n;
-
-	n = 0.0;
-	while ((str[*i] >= '0' && str[*i] <= '9') && (str[*i] != '.'
-			|| str[*i] != '\0'))
-	{
-		n = n * 10 + (str[*i] - '0');
-		*i += 1;
-	}
-	return (n);
-}
-
-double	ft_atoi_after_point(const char *str, int *i)
+double	ft_atof_before_point(const char *str, int *i, t_dt *dt)
 {
 	double	n;
 	int		j;
 
 	n = 0.0;
 	j = 0;
+	while ((str[*i] >= '0' && str[*i] <= '9') && (str[*i] != '.'
+			|| str[*i] != '\0'))
+	{
+		n = n * 10 + (str[*i] - '0');
+		*i += 1;
+		if (j > 1)
+			ft_error(2, dt);
+		j++;
+	}
+	return (n);
+}
+
+double	ft_atoi_after_point(const char *str, int *i, t_dt *dt)
+{
+	double	n;
+	int		j;
+	int		k;
+
+	n = 0.0;
+	j = 0;
+	k = 0;
 	while (str[*i] >= '0' && str[*i] <= '9')
 	{
 		n = n * 10 + (str[*i] - '0');
 		*i += 1;
 		j++;
+		k++;
+		if (k > 9)
+			ft_error(2, dt);
 	}
 	while (j != 0)
 	{
@@ -92,9 +102,9 @@ double	ft_atof(const char *str, t_dt *dt)
 			negflag = (-1);
 		i++;
 	}
-	n += ft_atof_before_point(str, &i);
+	n += ft_atof_before_point(str, &i, dt);
 	i++;
-	n += ft_atoi_after_point(str, &i);
+	n += ft_atoi_after_point(str, &i, dt);
 	return (n * negflag);
 }
 

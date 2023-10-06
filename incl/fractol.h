@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/03 12:15:16 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:57:30 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,9 @@ void		ft_scroll_man(double xdelta, double ydelta, t_dt *dt);
 /*-----Error & help functions-----*/
 
 void		ft_error(int errno, t_dt *dt);
+void		ft_print_arg_error(t_dt *dt);
 void		ft_print_nr_error(t_dt *dt);
+void		ft_print_too_big_arg(t_dt *dt);
 void		ft_print_help(t_dt *dt);
 
 /*-----Functions for working with complex numbers-----*/
