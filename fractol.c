@@ -6,7 +6,7 @@
 /*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:47:44 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/03 12:08:23 by smelicha         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:16:25 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /*Parses the argument given to the program*/
 static void	ft_arg_resolve(t_dt *dt, int argc, const char *argv[])
 {
-	ft_printf("argc: %i\n", argc);
 	if (argc <= 1)
 		dt->fr_flag = 1 ;
 	else if (ft_match(argv[1], "mandelbrot"))
