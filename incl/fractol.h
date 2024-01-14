@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smelicha <smelicha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smelicha <smelicha@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:44:48 by smelicha          #+#    #+#             */
-/*   Updated: 2023/10/06 14:57:30 by smelicha         ###   ########.fr       */
+/*   Updated: 2024/01/14 22:34:21 by smelicha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRACTOL_H
 
 # include <math.h>
+# include <stdio.h>
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../ft_printf/incl/ft_printf.h"
 
